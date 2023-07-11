@@ -1,0 +1,184 @@
+[
+  {
+    "category": "tea",
+    "desc": "The distinctive sweet and refreshing taste of longan delicately blends with the finest oolong tea and chia seeds to bring you a drink that is not only delicious but also nutritious.",
+    "id": "dragon-eyes-chia-seeds-tea",
+    "img": "https://firebasestorage.googleapis.com/v0/b/astra-cfshop.appspot.com/o/1669448920003tra-nhan-da_484810_cbb05dd5a8a4441780c16832e38bfcbd.png?alt=media&token=ed47eb9d-70ba-43bc-9904-a41d50f60131",
+    "inStock": "true",
+    "price": "2.05",
+    "size": [
+      "S",
+      "M",
+      "L"
+    ],
+    "title": "Dragon Eyes (Longan) Chia Seeds Tea"
+  },
+  {
+    "category": "coffee",
+    "desc": "\"Bac Suu\" is \"A glass of white milk with a little coffee.\" This drink is very suitable for those who want to experience the bitter taste of coffee and enjoy the greasy sweetness of milk.",
+    "id": "bac-siu-nong",
+    "img": "https://firebasestorage.googleapis.com/v0/b/astra-cfshop.appspot.com/o/16687918405971639377926_bacsiunong_549b1856611e41619554531f0a6212c2.webp?alt=media&token=62f79808-f0b8-4444-b3a9-f642e1f33d18",
+    "inStock": "true",
+    "price": "2.95",
+    "size": [
+      "S",
+      "M",
+      "L"
+    ],
+    "title": "Bac Suu"
+  },
+  {
+    "category": "tea",
+    "desc": "Black tea is brewed fresh every day, keeping the strong acrid flavor characteristic of tea leaves, topped with a floating \"homemade\" Macchiato layer that captivates with salty, fatty cheese.",
+    "id": "macchiato-black-tea",
+    "img": "https://firebasestorage.googleapis.com/v0/b/astra-cfshop.appspot.com/o/1669448443497tra-den-matchiato_430281_e6f452a8781d483aae7241b555ab1913.png?alt=media&token=756b93c2-d600-4845-8d40-fb33051ac0ee",
+    "inStock": "true",
+    "price": "2.10",
+    "size": [
+      "S",
+      "M",
+      "L"
+    ],
+    "title": "Macchiato Black Tea"
+  },
+  {
+    "category": "coffee",
+    "desc": "The slight bitterness from traditional filter coffee combined with Italian Espresso, mixed with the sweetness of milk cream and cocoa egg foam, added fragrant toasted almonds, with a delicious crunchy coffee jelly topping. All blended in a drink that makes the taste buds 'wake up', delicious and full of hiccups.",
+    "id": "cloudfee-roasted-almond",
+    "img": "https://product.hstatic.net/1000075078/product/1665655231_cloudfee-roasted-almond_fd7f9778e1814e81bc049f991ffacf60.jpg",
+    "inStock": "true",
+    "price": "2",
+    "size": [
+      "S",
+      "M",
+      "L"
+    ],
+    "title": "Cloudfee Roasted Almond"
+  },
+  {
+    "category": "tea",
+    "desc": "The sweet taste of peaches, the sour taste of the whole yellow orange, the acrid taste of fresh black tea brewed every 4 hours, and the strong aroma of lemongrass are the bright spots that make up the appeal of this drink.",
+    "id": "tra-dao-cam-sa-da",
+    "img": "https://firebasestorage.googleapis.com/v0/b/astra-cfshop.appspot.com/o/16687938221481668574338_tra-dao-cam-sa_28487052296d4f85ab197868399ddde8.webp?alt=media&token=973d0d75-5a97-454b-8ba6-451f54af535a",
+    "inStock": "true",
+    "price": "1.75",
+    "size": [
+      "S",
+      "M",
+      "L"
+    ],
+    "title": "Iced Peach Orange Lemongrass Tea"
+  },
+  {
+    "category": "milk-tea",
+    "desc": "Cheese lovers can't miss this supreme milk tea. The bold flavor of grilled oolong - the most popular tea base today, mixed with fragrant milk cream. In particular, immediately conquer cheese fans by the soft, salty foam of cheese. The more delicious with pure grilled Oolong jelly, crunchy chewy, super delicious.",
+    "id": "mochi-cloud-tea-cheese-puffs",
+    "img": "https://firebasestorage.googleapis.com/v0/b/astra-cfshop.appspot.com/o/16697165654191667460766_kem-cheese_cff00d281759455aabe3761796cd220a_large.png?alt=media&token=741ad104-1336-4e7a-925a-692f3965d2b3",
+    "inStock": "true",
+    "price": "1.89",
+    "size": [
+      "S",
+      "M",
+      "L"
+    ],
+    "title": "Cloud Tea Mochi With Cheese Puffs"
+  },
+  {
+    "category": "milk-tea",
+    "desc": "In the cold weather, there is nothing better than sipping a hot cup of Chocolate Milk Tea. The familiar taste of toasted Oolong tea combined with sweet chocolate, plus a soft marshmallow topping, is addicting every time you drink it.",
+    "id": "chocolate-milk-tea",
+    "img": "https://firebasestorage.googleapis.com/v0/b/astra-cfshop.appspot.com/o/16694490395751666020159_smore-choco_e07c92322e434c1e9d3db576ba7871be.png?alt=media&token=9fa0b981-b336-4a8e-8ba3-577418c23272",
+    "inStock": "true",
+    "price": "2.10",
+    "size": [
+      "S",
+      "M",
+      "L"
+    ],
+    "title": "Chocolate Milk Tea"
+  },
+  {
+    "category": "milk-tea",
+    "desc": "Add a little sweetness to a new day with whole-leaf black tea, fragrant milk in perfect proportions, and crunchy white bubbles available for you to enjoy every sip of sweet and delicious milk tea.",
+    "id": "hong-tra-sua-tran-chau",
+    "img": "https://firebasestorage.googleapis.com/v0/b/astra-cfshop.appspot.com/o/1668855551493hong-tra-sua-tran-chau_326977_a05ac5e1f3214a4aad2ac41ccd2ac68f.webp?alt=media&token=9ff90f56-f0b6-4c8c-81b4-c94ea257cb68",
+    "inStock": "true",
+    "price": "1.20",
+    "size": [
+      "S",
+      "M",
+      "L"
+    ],
+    "title": "Bubble Black Milk Tea"
+  },
+  {
+    "category": "coffee",
+    "desc": "Cool and balanced with the original 100% Arabica Cau Dat coffee flavor and fragrant fresh milk for every mouthful, attractive taste.",
+    "id": "cold-brew-sua-tuoi",
+    "img": "https://product.hstatic.net/1000075078/product/cold-brew-sua-tuoi_379576_27b88f6b43614208a47925f7c2cb9e33.jpg",
+    "inStock": "true",
+    "price": "2.50",
+    "size": [
+      "S",
+      "M",
+      "L"
+    ],
+    "title": "Cold Brew Fresk Milk"
+  },
+  {
+    "category": "milk-tea",
+    "desc": "The perfect combination of mild pink tea and fresh milk, accented with The Coffee House's famous macchiato layer gives you a delicate and healthy milk tea flavor.",
+    "id": "latte-macchiato-black-tea",
+    "img": "https://firebasestorage.googleapis.com/v0/b/astra-cfshop.appspot.com/o/1669448580984hong-tra-latte_618293_12b6838bc4f349408d4f938a303d285c.png?alt=media&token=c40995f3-71e7-4ad9-8bef-8165fe559a07",
+    "inStock": "true",
+    "price": "2.10",
+    "size": [
+      "S",
+      "M",
+      "L"
+    ],
+    "title": "Latte Macchiato Black Tea"
+  },
+  {
+    "category": "coffee",
+    "desc": "An original cup of Espresso begins with quality Arabica beans, mixed with a balanced proportion of Robusta beans, giving a caramel sweetness, mild sourness and consistency.",
+    "id": "espresso-nong",
+    "img": "https://firebasestorage.googleapis.com/v0/b/astra-cfshop.appspot.com/o/1668795983052espressonong_612688_a9114fdf1b4b45f8b4a9f85e57cd8b4a.webp?alt=media&token=34ff5e2f-91f7-40cc-93c1-e414feb3d9e0",
+    "inStock": "true",
+    "price": "1.89",
+    "size": [
+      "S",
+      "M",
+      "L"
+    ],
+    "title": "Hot Expresso"
+  },
+  {
+    "category": "tea",
+    "desc": "Nền trà oolong hảo hạng kết hợp cùng hạt sen tươi, bùi bùi và lớp foam cheese béo ngậy. Trà hạt sen là thức uống thanh mát, nhẹ nhàng phù hợp cho cả buổi sáng và chiều tối.",
+    "id": "tra-hat-sen-da",
+    "img": "https://firebasestorage.googleapis.com/v0/b/astra-cfshop.appspot.com/o/1668855319438tra-sen_905594_8e3f5bec386d4a299f67cfca3c8b2f17.webp?alt=media&token=058ec806-be39-47e3-8c41-10e676d0252b",
+    "inStock": "true",
+    "price": "1.34",
+    "size": [
+      "S",
+      "M",
+      "L"
+    ],
+    "title": "Iced Lotus Tea"
+  },
+  {
+    "category": "milk-tea",
+    "desc": "Delicious, nutritious macadamia nut milk tea blended with oolong tea for a balanced, sweet taste accompanied by crispy white bubbles that bring the feeling of \"refreshed\" in every sip of milk tea.",
+    "id": "macadamia-bubble-milk-tea",
+    "img": "https://firebasestorage.googleapis.com/v0/b/astra-cfshop.appspot.com/o/1669447537497tra-sua-mac-ca_377522_630d73d64fc64f88943babc619416287.png?alt=media&token=f84a6b47-24b3-4d52-b0ee-665a60b77755",
+    "inStock": "true",
+    "price": "2.10",
+    "size": [
+      "S",
+      "M",
+      "L"
+    ],
+    "title": "Macadamia Bubble Milk Tea"
+  }
+]
