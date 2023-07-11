@@ -16,7 +16,7 @@ import Products from '../components/Products.vue';
 					</div>
 					<p class="lead">{{product.desc}}</p>
 					<div class="d-flex">
-						<input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
+						<input class="form-control text-center me-3" id="inputQuantity" type="number" value="1" style="max-width: 3rem" />
 						<button class="btn btn-outline-dark flex-shrink-0" type="button">
 							<i class="bi-cart-fill me-1"></i>
 							Add to cart

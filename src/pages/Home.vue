@@ -50,5 +50,8 @@ defineProps({
 	<Newsletter />
 </template>
 
+<script>
+</script>
+
 <style scoped>
 </style>

@@ -3,7 +3,6 @@
 </script>
 
 <template>
-	<!-- Footer -->
 	<footer class="bg-dark py-5 text-white">
 		<div class="container">
 				<div class="row text-center">
@@ -18,8 +17,8 @@
 					<div class="col-md-4">
 						<h4>CONNECT WITH US</h4>
 						<ul class="list-inline fs-2 text-white">
-							<li class="list-inline-item px-2"><i class="fab fa-facebook"></i></li>
-							<li class="list-inline-item px-2"><i class="fab fa-twitter"></i></li>
+							<li class="list-inline-item px-2"><i class="bi bi-facebook"></i></li>
+							<li class="list-inline-item px-2"><i class="bi bi-twitter"></i></li>
 							<li class="list-inline-item px-2"><i class="fab fa-instagram"></i></li>
 							<li class="list-inline-item px-2"><i class="fab fa-pinterest"></i></li>
 						</ul>

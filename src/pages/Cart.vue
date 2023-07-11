@@ -3,16 +3,13 @@ import CartItem from '../components/CartItem.vue';
 </script>
 
 <template>
-<div class="container my-5 min-vh-100">
-    <div class="row">
+<div class="container my-5">
+    <div class="row min-vh-100">
         <!-- Product list column -->
         <div class="col-md-8">
             <h1>Shopping Cart</h1>
             <hr>
-            <CartItem/>
-            <CartItem/>
-            <CartItem/>
-            <CartItem/>
+            <CartItem v-for="item in data" :key="item.id" :item="item" />
         </div>
         <!-- Summary and checkout column -->
         <div class="col-md-4">
@@ -22,7 +19,7 @@ import CartItem from '../components/CartItem.vue';
                     <ul class="list-group list-group-flush my-3">
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             Subtotal
-                            <span>$99.99</span>
+                            <span>${{total}}</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             Shipping
@@ -40,7 +37,7 @@ import CartItem from '../components/CartItem.vue';
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <strong>Total</strong>
-                            <strong>$109.98</strong>
+                            <strong>${{ total + 9.99}}</strong>
                         </li>
                     </ul>
                     <button type="button" class="btn btn-lg btn-outline-dark flex-shrink-0">Checkout</button>
@@ -52,6 +49,29 @@ import CartItem from '../components/CartItem.vue';
 </template>
 
 <script>
+export default {
+	data() {
+		return {
+			data: [],
+            total: 0
+		}
+	},
+	created() {
+		fetch('/data/cart.json')
+		.then(response => response.json())
+		.then(data => {
+			this.data = data;
+
+            // foreach id in data, get product from store and add to total
+            data.forEach(item => {
+                let product = this.$store.state.products.find(product => product.id === item.id);
+                // parse int
+                this.total += parseInt(product.price);
+
+            });
+		})
+	}, 
+}
 </script>
 
 <style scoped>

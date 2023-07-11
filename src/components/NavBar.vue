@@ -36,6 +36,25 @@
   </nav>
 </template>
 
+<script>
+export default {
+	data() {
+		return {
+			products: []
+		}
+	},
+	created() {
+		fetch('/data/products.json')
+		.then(response => response.json())
+		.then(data => {
+			this.$store.dispatch('setProducts', data);
+			// log state
+			console.log(this.$store.state.products);
+		})
+	}, 
+}
+</script>
+
 <style scoped>
 .announcement {
   background-color: #000000;

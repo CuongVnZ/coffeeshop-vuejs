@@ -2,6 +2,7 @@ import './assets/main.css'
 
 import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
+import store from './vuex/store.js'
 
 import App from './App.vue'
 import Home from './pages/Home.vue'
@@ -29,5 +30,7 @@ const router = createRouter({
 })
 
 const app = createApp(App)
+// use store
+app.use(store)
 app.use(router)
 app.mount('#app')

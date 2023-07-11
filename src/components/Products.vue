@@ -28,21 +28,13 @@ defineProps({
 
 <script>
 export default {
-  props: {
-  },
 	data() {
 		return {
-			data: [],
 			products: []
 		}
 	},
 	created() {
-		fetch('/data/products.json')
-		.then(response => response.json())
-		.then(data => {
-			this.data = data
-			this.filterProducts();
-		})
+		this.filterProducts();
 	}, 
 	watch : {
 		name: function (val) {
@@ -56,30 +48,33 @@ export default {
 		},
 		limit: function (val) {
 			this.filterProducts();
+		},
+		// watch this.$store.state.products
+		'$store.state.products': function (val) {
+			this.filterProducts();
 		}
 	},
   methods: {
     filterProducts() {
-      this.products = this.data.filter((product) => {
-        return this.filterCondition(product);
-      });
-
-			// limit products
-			if (this.limit !== -1) {
-				this.products = this.products.slice(0, this.limit);
-			}
+		var data = this.$store.state.products;
+		this.products = data.filter((product) => {
+			return this.filterCondition(product);
+		});
+		if (this.limit !== -1) {
+			this.products = this.products.slice(0, this.limit);
+		}
     },
     filterCondition(product, cnt) {
-      if (this.name !== '' && !product.title.toLowerCase().includes(this.name.toLowerCase())) {
-        return false;
-      }
-      if (this.type !== '' && product.category !== this.type) {
-        return false;
-      }
-      if (this.price !== -1 && product.price > this.price) {
-        return false;
-      }
-      return true;
+		if (this.name !== '' && !product.title.toLowerCase().includes(this.name.toLowerCase())) {
+			return false;
+		}
+		if (this.type !== '' && product.category !== this.type) {
+			return false;
+		}
+		if (this.price !== -1 && product.price > this.price) {
+			return false;
+		}
+		return true;
     }
   }
 }
