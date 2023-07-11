@@ -27,3 +27,8 @@ npm run dev
 ```sh
 npm run build
 ```
+
+<!-- images -->
+![image](media/1.png)
+![image](media/2.png)
+![image](media/3.png)
