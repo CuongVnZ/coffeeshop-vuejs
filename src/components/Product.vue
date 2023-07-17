@@ -13,15 +13,15 @@ defineProps({
 		<img class="product-image" :src="product.img" :alt="product.title"/>
 		<div class="product-info">
 			<div class="product-icon">
-				<i class="fas fa-cart-plus"></i>
+				<i class="bi bi-cart-plus-fill"></i>
 			</div>
 			<router-link :to="'/product/'+product.id" class="text-dark text-decoration-none">
 				<div class="product-icon">
-					<i class="fas fa-search"></i>
+					<i class="bi bi-search"></i>
 				</div>
 			</router-link>
 			<div class="product-icon">
-				<i class="fas fa-star"></i>
+				<i class="bi bi-heart-fill"></i>
 			</div>
 		</div>
 	</div>

@@ -16,11 +16,11 @@
 					</div>
 					<div class="col-md-4">
 						<h4>CONNECT WITH US</h4>
-						<ul class="list-inline fs-2 text-white">
+						<ul class="list-inline fs-3 text-white">
 							<li class="list-inline-item px-2"><i class="bi bi-facebook"></i></li>
 							<li class="list-inline-item px-2"><i class="bi bi-twitter"></i></li>
-							<li class="list-inline-item px-2"><i class="fab fa-instagram"></i></li>
-							<li class="list-inline-item px-2"><i class="fab fa-pinterest"></i></li>
+							<li class="list-inline-item px-2"><i class="bi bi-instagram"></i></li>
+							<li class="list-inline-item px-2"><i class="bi bi-pinterest"></i></li>
 						</ul>
 					</div>
 				</div>

@@ -8,23 +8,27 @@ import Products from '../components/Products.vue';
     <div class="row">
       <div class="col-md-4 border-right">
         <div class="sticky-top filter">
-          <h3>Search by:</h3>
-          <div class="form-group">
-            <label for="type">Type:</label>
-            <select class="form-control" id="type" v-model="type">
-              <option value="">All</option>
-              <option value="coffee">Coffee</option>
-              <option value="tea">Tea</option>
-              <option value="milk-tea">Milk Tea</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" class="form-control" id="name" v-model="name">
-          </div>
-          <div class="form-group">
-            <label for="price">Price:</label>
-            <input type="text" class="form-control" id="price" v-model="price">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">Search by:</h3>
+              <div class="form-group">
+                <label for="type">Type:</label>
+                <select class="form-control" id="type" v-model="type">
+                  <option value="">All</option>
+                  <option value="coffee">Coffee</option>
+                  <option value="tea">Tea</option>
+                  <option value="milk-tea">Milk Tea</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" v-model="name">
+              </div>
+              <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="text" class="form-control" id="price" v-model="price">
+              </div>
+            </div>
           </div>
         </div>
       </div>

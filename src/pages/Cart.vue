@@ -7,9 +7,9 @@ import CartItem from '../components/CartItem.vue';
     <div class="row min-vh-100">
         <!-- Product list column -->
         <div class="col-md-8">
-            <h1>Shopping Cart</h1>
+            <h1>SHOPPING CART</h1>
             <hr>
-            <CartItem v-for="item in data" :key="item.id" :item="item" />
+            <CartItem v-for="item in cart" :key="item.id" :item="item" />
         </div>
         <!-- Summary and checkout column -->
         <div class="col-md-4">
@@ -52,24 +52,19 @@ import CartItem from '../components/CartItem.vue';
 export default {
 	data() {
 		return {
-			data: [],
+			cart: [],
             total: 0
 		}
 	},
 	created() {
-		fetch('/data/cart.json')
-		.then(response => response.json())
-		.then(data => {
-			this.data = data;
+        // get cart from store
+        this.cart = this.$store.state.cart;
 
-            // foreach id in data, get product from store and add to total
-            data.forEach(item => {
-                let product = this.$store.state.products.find(product => product.id === item.id);
-                // parse int
-                this.total += parseInt(product.price);
-
-            });
-		})
+        // foreach id in data, get product from store and add to total
+        this.cart.forEach(item => {
+            let product = this.$store.state.products.find(product => product.id === item.id);
+            this.total += parseFloat(product.price) * item.amount;
+        });
 	}, 
 }
 </script>

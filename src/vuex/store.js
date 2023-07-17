@@ -2,7 +2,17 @@ import Vuex from 'vuex'
 
 export default new Vuex.Store({
   state: {
-    products: []
+    products: [],
+    cart: [
+      {
+        "id": "macchiato-black-tea",
+        "amount": 3
+      },
+      {
+        "id": "dragon-eyes-chia-seeds-tea",
+        "amount": 5
+      }
+    ]
   },
 
   mutations: {
@@ -23,6 +33,23 @@ export default new Vuex.Store({
     },
     SET_PRODUCTS(state, products) {
       state.products = products
+    },
+    ADD_TO_CART(state, product) {
+      const index = state.carts.findIndex(p => p.id === product.id)
+      if (index !== -1) {
+        state.cart[index].amount++
+      } else {
+        state.cart.push({
+          id: product.id,
+          amount: 1
+        })
+      }
+    },
+    REMOVE_FROM_CART(state, productId) {
+      const index = state.cart.findIndex(p => p.id === productId)
+      if (index !== -1) {
+        state.cart.splice(index, 1)
+      }
     }
   },
 
@@ -38,6 +65,12 @@ export default new Vuex.Store({
     },
     setProducts({ commit }, products) {
       commit('SET_PRODUCTS', products)
+    },
+    addToCart({ commit }, product) {
+      commit('ADD_TO_CART', product)
+    },
+    removeFromCart({ commit }, productId) {
+      commit('REMOVE_FROM_CART', productId)
     }
   },
 

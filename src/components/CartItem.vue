@@ -24,7 +24,7 @@ defineProps({
 							<button type="button" class="btn btn-sm btn-outline-secondary">{{ item.amount }}</button>
 							<button type="button" class="btn btn-sm btn-outline-secondary">+</button>
 						</div>
-						<button type="button" class="btn btn-sm btn-outline-danger">Remove</button>
+						<button type="button" class="btn btn-sm btn-outline-danger" @click="remove(item.id)">Remove</button>
 					</div>
 				</div>
 			</div>
@@ -42,6 +42,13 @@ export default {
   created () {
 	// fetch product from store using item.id
 	this.product = this.$store.state.products.find(product => product.id === this.item.id);
+  },
+  methods: {
+	remove(id) {
+		console.log(id)
+		// remove item from cart
+		this.$store.dispatch('removeFromCart', id);
+	}
   }
 }
 </script>

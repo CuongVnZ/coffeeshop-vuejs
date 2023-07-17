@@ -3,7 +3,7 @@
     "category": "tea",
     "desc": "The distinctive sweet and refreshing taste of longan delicately blends with the finest oolong tea and chia seeds to bring you a drink that is not only delicious but also nutritious.",
     "id": "dragon-eyes-chia-seeds-tea",
-    "img": "https://firebasestorage.googleapis.com/v0/b/astra-cfshop.appspot.com/o/1669448920003tra-nhan-da_484810_cbb05dd5a8a4441780c16832e38bfcbd.png?alt=media&token=ed47eb9d-70ba-43bc-9904-a41d50f60131",
+    "img": "/images/products/1.png",
     "inStock": "true",
     "price": "2.05",
     "size": [
@@ -17,7 +17,7 @@
     "category": "coffee",
     "desc": "\"Bac Suu\" is \"A glass of white milk with a little coffee.\" This drink is very suitable for those who want to experience the bitter taste of coffee and enjoy the greasy sweetness of milk.",
     "id": "bac-siu-nong",
-    "img": "https://firebasestorage.googleapis.com/v0/b/astra-cfshop.appspot.com/o/16687918405971639377926_bacsiunong_549b1856611e41619554531f0a6212c2.webp?alt=media&token=62f79808-f0b8-4444-b3a9-f642e1f33d18",
+    "img": "/images/products/2.png",
     "inStock": "true",
     "price": "2.95",
     "size": [
@@ -31,7 +31,7 @@
     "category": "tea",
     "desc": "Black tea is brewed fresh every day, keeping the strong acrid flavor characteristic of tea leaves, topped with a floating \"homemade\" Macchiato layer that captivates with salty, fatty cheese.",
     "id": "macchiato-black-tea",
-    "img": "https://firebasestorage.googleapis.com/v0/b/astra-cfshop.appspot.com/o/1669448443497tra-den-matchiato_430281_e6f452a8781d483aae7241b555ab1913.png?alt=media&token=756b93c2-d600-4845-8d40-fb33051ac0ee",
+    "img": "/images/products/macchiato-black-tea.png",
     "inStock": "true",
     "price": "2.10",
     "size": [
@@ -45,7 +45,7 @@
     "category": "coffee",
     "desc": "The slight bitterness from traditional filter coffee combined with Italian Espresso, mixed with the sweetness of milk cream and cocoa egg foam, added fragrant toasted almonds, with a delicious crunchy coffee jelly topping. All blended in a drink that makes the taste buds 'wake up', delicious and full of hiccups.",
     "id": "cloudfee-roasted-almond",
-    "img": "https://product.hstatic.net/1000075078/product/1665655231_cloudfee-roasted-almond_fd7f9778e1814e81bc049f991ffacf60.jpg",
+    "img": "/images/products/cloudfee-roasted-almond.png",
     "inStock": "true",
     "price": "2",
     "size": [
@@ -59,7 +59,7 @@
     "category": "tea",
     "desc": "The sweet taste of peaches, the sour taste of the whole yellow orange, the acrid taste of fresh black tea brewed every 4 hours, and the strong aroma of lemongrass are the bright spots that make up the appeal of this drink.",
     "id": "tra-dao-cam-sa-da",
-    "img": "https://firebasestorage.googleapis.com/v0/b/astra-cfshop.appspot.com/o/16687938221481668574338_tra-dao-cam-sa_28487052296d4f85ab197868399ddde8.webp?alt=media&token=973d0d75-5a97-454b-8ba6-451f54af535a",
+    "img": "/images/products/tra-dao-cam-sa-da.png",
     "inStock": "true",
     "price": "1.75",
     "size": [
@@ -101,7 +101,7 @@
     "category": "milk-tea",
     "desc": "Add a little sweetness to a new day with whole-leaf black tea, fragrant milk in perfect proportions, and crunchy white bubbles available for you to enjoy every sip of sweet and delicious milk tea.",
     "id": "hong-tra-sua-tran-chau",
-    "img": "https://firebasestorage.googleapis.com/v0/b/astra-cfshop.appspot.com/o/1668855551493hong-tra-sua-tran-chau_326977_a05ac5e1f3214a4aad2ac41ccd2ac68f.webp?alt=media&token=9ff90f56-f0b6-4c8c-81b4-c94ea257cb68",
+    "img": "/images/products/hong-tra-sua-tran-chau.png",
     "inStock": "true",
     "price": "1.20",
     "size": [

@@ -25,7 +25,7 @@
                                 <label for="passwordInput">Password:</label>
                                 <input type="password" class="form-control" name="passwordInput" id="passwordInput" v-model="passwordInput">
                             </div>
-                            <button type="submit" class="btn btn-primary float-end text-light">Submit</button>
+                            <button type="submit" class="btn btn-outline-dark float-end">Submit</button>
                         </form>
                     </div>
                 </div>
