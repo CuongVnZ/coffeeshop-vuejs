@@ -12,26 +12,17 @@ export default new Vuex.Store({
         "title": "Dragon Eyes (Longan) Chia Seeds Tea",
         "amount": 5
       }
+    ],
+    notifications: [
+      {
+        id: 0,
+        desc: 'Notification 1',
+      },
     ]
   },
 
   mutations: {
     // PRODUCTS
-    ADD_PRODUCT(state, product) {
-      state.products.push(product)
-    },
-    UPDATE_PRODUCT(state, updatedProduct) {
-      const index = state.products.findIndex(p => p.id === updatedProduct.id)
-      if (index !== -1) {
-        state.products.splice(index, 1, updatedProduct)
-      }
-    },
-    DELETE_PRODUCT(state, productId) {
-      const index = state.products.findIndex(p => p.id === productId)
-      if (index !== -1) {
-        state.products.splice(index, 1)
-      }
-    },
     SET_PRODUCTS(state, products) {
       state.products = products
     },
@@ -58,27 +49,31 @@ export default new Vuex.Store({
       if (index !== -1) {
         state.cart.splice(index, 1)
       }
-    }
+    },
+
+    // NOTIFICATIONS
+    ADD_NOTIFICATION(state, notification) {
+      state.notifications.push({ id: state.notifications.length, desc: notification })
+    },
   },
 
   actions: {
-    addProduct({ commit }, product) {
-      commit('ADD_PRODUCT', product)
-    },
-    updateProduct({ commit }, updatedProduct) {
-      commit('UPDATE_PRODUCT', updatedProduct)
-    },
-    deleteProduct({ commit }, productId) {
-      commit('DELETE_PRODUCT', productId)
-    },
+    // PRODUCTS
     setProducts({ commit }, products) {
       commit('SET_PRODUCTS', products)
     },
+
+    // CART
     addToCart({ commit }, product) {
       commit('ADD_TO_CART', product)
     },
     removeFromCart({ commit }, productId) {
       commit('REMOVE_FROM_CART', productId)
+    },
+
+    // NOTIFICATIONS
+    addNotification({ commit }, notification) {
+      commit('ADD_NOTIFICATION', notification)
     }
   },
 

@@ -32,6 +32,7 @@ export default {
 	methods: {
 		addToCart(id) {
 			this.$store.dispatch('addToCart', {id, amount: 1});
+			this.$store.dispatch('addNotification', "You added an item to your cart.");
 		}
 	}
 }

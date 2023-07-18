@@ -28,6 +28,7 @@ defineProps({
 			</div>
 		</div>
 	</div>
+	<!-- Item -->
 	<div class="card mb-3">
 		<div class="row g-0">
 			<div class="col-md-3">
@@ -44,7 +45,9 @@ defineProps({
 							<button type="button" class="btn btn-sm btn-outline-secondary">{{ item.amount }}</button>
 							<button type="button" class="btn btn-sm btn-outline-secondary">+</button>
 						</div>
-						<button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" :data-bs-target="'#' + modalId" >Remove</button>
+						<button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" :data-bs-target="'#' + modalId">
+							Remove
+						</button>
 					</div>
 				</div>
 			</div>
@@ -62,6 +65,10 @@ export default {
   methods: {
 	remove(id) {
 		this.$store.dispatch('removeFromCart', id);
+		this.$store.dispatch('addNotification', "You removed an item from your cart.");
+	},
+	addNotify(desc) {
+		this.$store.dispatch('addNotification', desc);
 	}
   }
 }
