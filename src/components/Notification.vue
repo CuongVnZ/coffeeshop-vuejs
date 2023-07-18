@@ -1,7 +1,7 @@
 <script setup>
 defineProps({
 	toastId: {
-		type: String,
+		type: Number,
 		default: 'liveToast'
 	},
 	desc: {
