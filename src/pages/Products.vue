@@ -10,21 +10,21 @@ import Products from '../components/Products.vue';
         <div class="sticky-top filter">
           <div class="card">
             <div class="card-body">
-              <h3 class="card-title">Search by:</h3>
+              <h3 class="card-title mb-3">SEARCH BY</h3>
               <div class="form-group">
                 <label for="type">Type:</label>
-                <select class="form-control" id="type" v-model="type">
+                <select class="form-control mb-3" id="type" v-model="type">
                   <option value="">All</option>
                   <option value="coffee">Coffee</option>
                   <option value="tea">Tea</option>
                   <option value="milk-tea">Milk Tea</option>
                 </select>
               </div>
-              <div class="form-group">
+              <div class="form-group mb-3">
                 <label for="name">Name:</label>
                 <input type="text" class="form-control" id="name" v-model="name">
               </div>
-              <div class="form-group">
+              <div class="form-group mb-3">
                 <label for="price">Price:</label>
                 <input type="text" class="form-control" id="price" v-model="price">
               </div>

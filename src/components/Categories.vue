@@ -43,8 +43,17 @@ export default {
     position: relative;
 }
 
+.cat-container:hover .cat-img {
+	filter: brightness(0.6);
+}
+
+.cat-container:hover .cat-info {
+	opacity: 1;
+}
+
 .cat-info {
     position: absolute;
+	opacity: 0;
     top: 0;
     left: 0;
     width: 100%;
@@ -53,6 +62,7 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+	transition: all 0.3s ease-in-out;
 }
 
 .cat-title {
@@ -61,6 +71,8 @@ export default {
 }
 
 .cat-img {
-	filter: brightness(0.9);
+	transition: all 0.3s ease-in-out;
+	border-radius: 30px;
+	box-shadow: 5px 5px #4141415c;
 }
 </style>

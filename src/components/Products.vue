@@ -36,21 +36,21 @@ export default {
 	created() {
 		this.filterProducts();
 	}, 
-	watch : {
-		name: function (val) {
+	watch: {
+		name: function() {
 			this.filterProducts();
 		},
-		type: function (val) {
+		type: function() {
 			this.filterProducts();
 		},
-		price: function (val) {
+		price: function() {
 			this.filterProducts();
 		},
-		limit: function (val) {
+		limit: function() {
 			this.filterProducts();
 		},
 		// watch this.$store.state.products
-		'$store.state.products': function (val) {
+		'$store.state.products': function() {
 			this.filterProducts();
 		}
 	},

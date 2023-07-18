@@ -3,7 +3,7 @@
     "category": "tea",
     "desc": "The distinctive sweet and refreshing taste of longan delicately blends with the finest oolong tea and chia seeds to bring you a drink that is not only delicious but also nutritious.",
     "id": "dragon-eyes-chia-seeds-tea",
-    "img": "/images/products/1.png",
+    "img": "/images/products/dragon-eyes-chia-seeds-tea.png",
     "inStock": "true",
     "price": "2.05",
     "size": [
@@ -17,7 +17,7 @@
     "category": "coffee",
     "desc": "\"Bac Suu\" is \"A glass of white milk with a little coffee.\" This drink is very suitable for those who want to experience the bitter taste of coffee and enjoy the greasy sweetness of milk.",
     "id": "bac-siu-nong",
-    "img": "/images/products/2.png",
+    "img": "/images/products/bac-siu-nong.png",
     "inStock": "true",
     "price": "2.95",
     "size": [

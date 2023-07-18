@@ -5,17 +5,18 @@ export default new Vuex.Store({
     products: [],
     cart: [
       {
-        "id": "macchiato-black-tea",
-        "amount": 3
-      },
-      {
+        "desc": "The distinctive sweet and refreshing taste of longan delicately blends with the finest oolong tea and chia seeds to bring you a drink that is not only delicious but also nutritious.",
         "id": "dragon-eyes-chia-seeds-tea",
+        "img": "/images/products/dragon-eyes-chia-seeds-tea.png",
+        "price": "2.05",
+        "title": "Dragon Eyes (Longan) Chia Seeds Tea",
         "amount": 5
       }
     ]
   },
 
   mutations: {
+    // PRODUCTS
     ADD_PRODUCT(state, product) {
       state.products.push(product)
     },
@@ -34,14 +35,21 @@ export default new Vuex.Store({
     SET_PRODUCTS(state, products) {
       state.products = products
     },
-    ADD_TO_CART(state, product) {
-      const index = state.carts.findIndex(p => p.id === product.id)
+
+    // CART
+    ADD_TO_CART(state, payload) {
+      const product = state.products.find(p => p.id === payload.id)
+      const index = state.cart.findIndex(p => p.id === payload.id)
       if (index !== -1) {
-        state.cart[index].amount++
+        state.cart[index].amount += payload.amount
       } else {
         state.cart.push({
           id: product.id,
-          amount: 1
+          title: product.title,
+          desc: product.desc,
+          img: product.img,
+          amount: payload.amount,
+          price: product.price
         })
       }
     },

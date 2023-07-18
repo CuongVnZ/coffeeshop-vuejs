@@ -12,7 +12,7 @@ defineProps({
 		<div class="product-circle"/>
 		<img class="product-image" :src="product.img" :alt="product.title"/>
 		<div class="product-info">
-			<div class="product-icon">
+			<div class="product-icon" @click="addToCart(product.id)">
 				<i class="bi bi-cart-plus-fill"></i>
 			</div>
 			<router-link :to="'/product/'+product.id" class="text-dark text-decoration-none">
@@ -27,6 +27,16 @@ defineProps({
 	</div>
 </template>
 
+<script>
+export default {
+	methods: {
+		addToCart(id) {
+			this.$store.dispatch('addToCart', {id, amount: 1});
+		}
+	}
+}
+</script>
+
 <style scoped>
 .product-container {
 	flex: 1;
@@ -38,6 +48,7 @@ defineProps({
 	justify-content: center;
 	background-color: #f7f4ee;
 	position: relative;
+	border-radius: 10px;
 }
 
 .product-container:hover .product-info {
@@ -72,6 +83,7 @@ defineProps({
 	justify-content: center;
 	transition: all 0.5s ease;
 	cursor: pointer;
+	border-radius: 10px;
 }
 
 .product-icon {

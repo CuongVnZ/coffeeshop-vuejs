@@ -16,7 +16,12 @@ import Products from '../components/Products.vue';
 					</div>
 					<p class="lead">{{product.desc}}</p>
 					<div class="d-flex">
-						<input class="form-control text-center me-3" id="inputQuantity" type="number" value="1" style="max-width: 3rem" />
+						<!-- <input class="form-control text-center me-3" id="inputQuantity" type="number" value="1" style="max-width: 3rem" /> -->
+						<div class="btn-group me-3">
+							<button type="button" class="btn btn-outline-dark" @click="decrease">-</button>
+							<button type="button" class="btn btn-outline-dark">{{amount}}</button>
+							<button type="button" class="btn btn-outline-dark" @click="increase">+</button>
+						</div>
 						<button class="btn btn-outline-dark flex-shrink-0" type="button" @click="addToCart(product.id)">
 							<i class="bi-cart-fill me-1"></i>
 							Add to cart
@@ -42,7 +47,8 @@ export default {
 	data () {
 		return {
 			data: {},
-			product: {}
+			product: {},
+			amount: 1
 		}
 	},
 	created () {
@@ -60,8 +66,16 @@ export default {
 		}
 	},
 	methods: {
-		addToCart (id) {
-			this.$store.commit('addToCart', id)
+		addToCart(id) {
+			this.$store.dispatch('addToCart', {id, amount: this.amount})
+		},
+		increase() {
+			this.amount++
+		},
+		decrease() {
+			if (this.amount > 1) {
+				this.amount--
+			}
 		}
 	}
 }

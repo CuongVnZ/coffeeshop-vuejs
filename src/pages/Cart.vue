@@ -37,7 +37,7 @@ import CartItem from '../components/CartItem.vue';
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <strong>Total</strong>
-                            <strong>${{ total + 9.99}}</strong>
+                            <strong>${{ finalPrice }}</strong>
                         </li>
                     </ul>
                     <button type="button" class="btn btn-lg btn-outline-dark flex-shrink-0">Checkout</button>
@@ -53,19 +53,32 @@ export default {
 	data() {
 		return {
 			cart: [],
-            total: 0
+            total: 0,
+            shipping: 9.99,
+            finalPrice: 0
 		}
 	},
 	created() {
         // get cart from store
         this.cart = this.$store.state.cart;
-
-        // foreach id in data, get product from store and add to total
-        this.cart.forEach(item => {
-            let product = this.$store.state.products.find(product => product.id === item.id);
-            this.total += parseFloat(product.price) * item.amount;
-        });
-	}, 
+        this.calculateTotal();
+	},
+    methods: {
+        calculateTotal() {
+            this.total = this.cart.reduce((total, item) => {
+                return total + (item.price * item.amount);
+            }, 0);
+        }
+    },
+    watch: {
+		'$store.state.cart.length': function() {
+			this.calculateTotal();
+		},
+        total: function() {
+            this.finalPrice = this.total + this.shipping;
+            this.finalPrice = this.finalPrice.toFixed(2);
+        }
+    }
 }
 </script>
 
