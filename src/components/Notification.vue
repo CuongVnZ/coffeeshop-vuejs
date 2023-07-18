@@ -2,7 +2,7 @@
 defineProps({
 	toastId: {
 		type: Number,
-		default: 'liveToast'
+		default: -1
 	},
 	desc: {
 		type: String,
