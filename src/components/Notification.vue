@@ -28,8 +28,9 @@ defineProps({
 <script>
 export default {
   mounted () {
-	var toast = bootstrap.Toast.getOrCreateInstance(document.getElementById(this.toastId))
-	toast.show()
+    console.log(this.toastId);
+    var toast = bootstrap.Toast.getOrCreateInstance(document.getElementById(this.toastId))
+    toast.show()
   }
 }
 </script>
