@@ -12,7 +12,9 @@
 				<img :src="category.img" class="img-fluid cat-img" :alt="category.title">
 				<div class="cat-info">
 					<h1 class="cat-title">{{category.title}}</h1>
-					<button class="cat-button btn btn-outline-light flex-shrink-0">SHOP NOW</button>
+					<router-link to="/products">
+						<button class="cat-button btn btn-outline-light flex-shrink-0">SHOP NOW</button>
+					</router-link>
 				</div>
 			</div>
 		</div>
