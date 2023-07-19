@@ -2,7 +2,6 @@ import './assets/main.css'
 
 import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
-import store from './vuex/store.js'
 
 import App from './App.vue'
 import Home from './pages/Home.vue'
@@ -11,6 +10,8 @@ import Product from './pages/Product.vue'
 import Cart from './pages/Cart.vue'
 import Login from './pages/Login.vue'
 import Register from './pages/Register.vue'
+
+import store from './vuex/store.js'
 
 const routes = [
     { path: '/', component: Home },

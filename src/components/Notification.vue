@@ -20,7 +20,7 @@ defineProps({
       <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
     <div class="toast-body">
-      {{ this.desc }}
+      {{ desc }}
     </div>
   </div>
 </template>
@@ -28,9 +28,9 @@ defineProps({
 <script>
 export default {
   mounted () {
-    // console.log(this.toastId);
-    // var toast = bootstrap.Toast.getOrCreateInstance(document.getElementById(this.toastId))
-    // toast.show()
+    console.log(this.toastId);
+    var toast = Toast.getOrCreateInstance(document.getElementById(this.toastId))
+    toast.show()
   }
 }
 </script>
