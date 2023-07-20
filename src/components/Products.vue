@@ -1,5 +1,6 @@
 <script setup>
 import Product from '../components/Product.vue';
+import 'bootstrap'
 
 defineProps({
 	limit: {
@@ -50,13 +51,13 @@ export default {
 			this.filterProducts();
 		},
 		// watch this.$store.state.products
-		'$store.state.products': function() {
+		'$store.state.products.data': function() {
 			this.filterProducts();
 		}
 	},
   methods: {
     filterProducts() {
-		var data = this.$store.state.products;
+		var data = this.$store.getters.getProducts;
 		this.products = data.filter((product) => {
 			return this.filterCondition(product);
 		});

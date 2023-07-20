@@ -16,7 +16,6 @@ import Products from '../components/Products.vue';
 					</div>
 					<p class="lead">{{product.desc}}</p>
 					<div class="d-flex">
-						<!-- <input class="form-control text-center me-3" id="inputQuantity" type="number" value="1" style="max-width: 3rem" /> -->
 						<div class="btn-group me-3">
 							<button type="button" class="btn btn-outline-dark" @click="decrease">-</button>
 							<button type="button" class="btn btn-outline-dark">{{amount}}</button>
@@ -66,17 +65,15 @@ export default {
 		}
 	},
 	methods: {
-		addToCart(id) {
-			this.$store.dispatch('addToCart', {id, amount: this.amount})
-			this.$store.dispatch('addNotification', "You added an item to your cart.");
+		addToCart() {
+			this.$store.dispatch('addToCart', { ...this.product, amount: this.amount })
+			this.$store.dispatch('addNotification', "You added item(s) to your cart.");
 		},
 		increase() {
 			this.amount++
 		},
 		decrease() {
-			if (this.amount > 1) {
-				this.amount--
-			}
+			if (this.amount > 1) this.amount--
 		}
 	}
 }

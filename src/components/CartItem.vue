@@ -66,6 +66,7 @@ export default {
 	remove(id) {
 		this.$store.dispatch('removeFromCart', id);
 		this.$store.dispatch('addNotification', "You removed an item from your cart.");
+		console.log(this.$store.state)
 	},
 	addNotify(desc) {
 		this.$store.dispatch('addNotification', desc);

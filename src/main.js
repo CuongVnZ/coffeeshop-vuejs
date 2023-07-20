@@ -31,7 +31,6 @@ const router = createRouter({
 })
 
 const app = createApp(App)
-// use store
 app.use(store)
 app.use(router)
 app.mount('#app')

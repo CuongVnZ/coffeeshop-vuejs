@@ -59,8 +59,7 @@ export default {
 		}
 	},
 	created() {
-        // get cart from store
-        this.cart = this.$store.state.cart;
+        this.cart = this.$store.getters.getCart;
         this.calculateTotal();
 	},
     methods: {

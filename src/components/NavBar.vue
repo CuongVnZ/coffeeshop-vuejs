@@ -39,7 +39,7 @@
               <router-link to="/cart" class="nav-link">
                 <button class="btn btn-outline-dark">
                     <i class="bi bi-cart-fill me-1"></i>
-                    <span class="badge bg-dark text-white ms-1 rounded-pill">{{this.$store.state.cart.length}}</span>
+                    <span class="badge bg-dark text-white ms-1 rounded-pill">{{this.$store.getters.getCartSize}}</span>
                 </button>
               </router-link>
             </div>
@@ -60,8 +60,6 @@ export default {
 		.then(response => response.json())
 		.then(data => {
 			this.$store.dispatch('setProducts', data);
-			// log state
-			console.log(this.$store.state.products);
 		})
 	}, 
 }
