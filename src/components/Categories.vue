@@ -8,12 +8,12 @@
 			<div class="col-md-12 mb-2">
 				<h1 class="fw-bold">TOP CATEGORIES</h1>
 			</div>
-			<div class="col-4 cat-container" v-for="category in categories" :key="category.id">
+			<div class="col-md-4 cat-container" v-for="category in categories" :key="category.id">
 				<img :src="category.img" class="img-fluid cat-img" :alt="category.title">
-				<div class="cat-info">
-					<h1 class="cat-title">{{category.title}}</h1>
+				<div class="cat-info container p-3">
+					<h1 class="text-light my-3">{{category.title}}</h1>
 					<router-link to="/products">
-						<button class="cat-button btn btn-outline-light flex-shrink-0">SHOP NOW</button>
+						<button class="btn btn-outline-light flex-shrink-0">SHOP NOW</button>
 					</router-link>
 				</div>
 			</div>
@@ -54,22 +54,17 @@ export default {
 }
 
 .cat-info {
-    position: absolute;
+	position: absolute;
 	opacity: 0;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 	transition: all 0.3s ease-in-out;
-}
-
-.cat-title {
-    color: white;
-    margin-bottom: 20px;
 }
 
 .cat-img {

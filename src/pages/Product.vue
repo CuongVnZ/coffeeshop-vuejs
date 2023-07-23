@@ -9,19 +9,19 @@ import Products from '../components/Products.vue';
 			<div class="row gx-4 gx-lg-5 align-items-center">
 				<div class="col-md-5"><img class="card-img-top mb-5 mb-md-0" :src="product.img" :alt="product.title" /></div>
 				<div class="col-md-7">
-					<div class="small mb-1">SKU: {{ product.id }}</div>
+					<div class="small mb-1">SKU: {{ product.pid }}</div>
 					<h1 class="display-5 fw-bolder">{{ product.title }}</h1>
 					<div class="fs-5 mb-5">
-						<span>${{product.price}}</span>
+						<span>${{ product.price }}</span>
 					</div>
-					<p class="lead">{{product.desc}}</p>
+					<p class="lead">{{ product.desc }}</p>
 					<div class="d-flex">
 						<div class="btn-group me-3">
 							<button type="button" class="btn btn-outline-dark" @click="decrease">-</button>
-							<button type="button" class="btn btn-outline-dark">{{amount}}</button>
+							<button type="button" class="btn btn-outline-dark">{{ amount }}</button>
 							<button type="button" class="btn btn-outline-dark" @click="increase">+</button>
 						</div>
-						<button class="btn btn-outline-dark flex-shrink-0" type="button" @click="addToCart(product.id)">
+						<button class="btn btn-outline-dark flex-shrink-0" type="button" @click="addToCart(product.pid)">
 							<i class="bi-cart-fill me-1"></i>
 							Add to cart
 						</button>
@@ -46,25 +46,33 @@ export default {
 	data () {
 		return {
 			data: {},
-			product: {},
+			product: {
+				pid: '',
+				title: '',
+				desc: '',
+				price: 0,
+				img: '',
+				category: ''
+			},
 			amount: 1
 		}
 	},
 	created () {
-		fetch('/data/products.json')
-		.then(response => response.json())
-		.then(data => {
-			var id = this.$route.params.id
-			this.data = data
-			this.product = data.find(product => product.id == id)
-		})
+		this.loadProduct();
 	},
 	watch: {
 		'$route.params.id': function (id) {
-			this.product = this.data.find(product => product.id == id)
+			this.loadProduct();
+		},
+		'$store.getters.getProductSize': function () {
+			this.loadProduct();
 		}
 	},
 	methods: {
+		loadProduct() {
+			if(this.$store.getters.getProductSize == 0) return;
+			this.product = this.$store.getters.getProductById(this.$route.params.id)
+		},
 		addToCart() {
 			this.$store.dispatch('addToCart', { ...this.product, amount: this.amount })
 			this.$store.dispatch('addNotification', "You added item(s) to your cart.");

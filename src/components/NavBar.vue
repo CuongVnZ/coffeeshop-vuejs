@@ -49,20 +49,6 @@
 </template>
 
 <script>
-export default {
-	data() {
-		return {
-			products: []
-		}
-	},
-	beforeCreate() {
-		fetch('/data/products.json')
-		.then(response => response.json())
-		.then(data => {
-			this.$store.dispatch('setProducts', data);
-		})
-	}, 
-}
 </script>
 
 <style scoped>

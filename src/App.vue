@@ -12,6 +12,15 @@ import Notifications from './components/Notifications.vue';
 </template>
 
 <script>
+export default {
+	beforeCreate() {
+		fetch('https://eshop-mongo-api.vercel.app/api/products/')
+		.then(response => response.json())
+		.then(data => {
+			this.$store.dispatch('setProducts', data);
+		})
+	}
+}
 </script>
 
 <style scoped>

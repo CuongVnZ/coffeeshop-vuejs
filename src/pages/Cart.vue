@@ -19,7 +19,7 @@ import CartItem from '../components/CartItem.vue';
                     <ul class="list-group list-group-flush my-3">
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             Subtotal
-                            <span>${{total}}</span>
+                            <span>${{ subTotal.toFixed(2) }}</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             Shipping
@@ -37,7 +37,7 @@ import CartItem from '../components/CartItem.vue';
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <strong>Total</strong>
-                            <strong>${{ finalPrice }}</strong>
+                            <strong>${{ total }}</strong>
                         </li>
                     </ul>
                     <button type="button" class="btn btn-lg btn-outline-dark flex-shrink-0">Checkout</button>
@@ -53,9 +53,9 @@ export default {
 	data() {
 		return {
 			cart: [],
-            total: 0,
             shipping: 9.99,
-            finalPrice: 0
+            subTotal: 0,
+            total: 0
 		}
 	},
 	created() {
@@ -64,18 +64,18 @@ export default {
 	},
     methods: {
         calculateTotal() {
-            this.total = this.cart.reduce((total, item) => {
-                return total + (item.price * item.amount);
+            this.subTotal = this.cart.reduce((subTotal, item) => {
+                return subTotal + (item.price * item.amount);
             }, 0);
         }
     },
     watch: {
-		'$store.state.cart.length': function() {
+		'$store.getters.getCartSize': function() {
 			this.calculateTotal();
 		},
-        total: function() {
-            this.finalPrice = this.total + this.shipping;
-            this.finalPrice = this.finalPrice.toFixed(2);
+        subTotal: function() {
+            this.total = this.subTotal + this.shipping;
+            this.total = this.total.toFixed(2);
         }
     }
 }

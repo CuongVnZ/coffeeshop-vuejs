@@ -16,13 +16,16 @@ const actions = {
 
 const getters = {
   getProductById: (state) => (id) => {
-    return state.find(p => p.id === id)
+    return state.data.find(p => p.pid === id)
   },
   getProductsByCategory: (state) => (category) => {
-    return state.filter(p => p.category === category)
+    return state.data.filter(p => p.category === category)
   },
   getProducts: (state) => {
     return state.data
+  },
+  getProductSize: (state) => {
+    return state.data.length
   }
 }
 

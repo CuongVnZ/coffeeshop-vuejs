@@ -15,7 +15,7 @@ defineProps({
 			<div class="product-icon" @click="addToCart(product.id)">
 				<i class="bi bi-cart-plus-fill"></i>
 			</div>
-			<router-link :to="'/product/'+product.id" class="text-dark text-decoration-none">
+			<router-link :to="'/product/'+product.pid" class="text-dark text-decoration-none">
 				<div class="product-icon">
 					<i class="bi bi-search"></i>
 				</div>
