@@ -10,6 +10,7 @@ import CartItem from '../components/CartItem.vue';
             <h1>SHOPPING CART</h1>
             <hr>
             <CartItem v-for="item in cart" :key="item.id" :item="item" />
+            <p v-if="cart.length === 0">No items in cart.</p>
         </div>
         <!-- Summary and checkout column -->
         <div class="col-md-4">

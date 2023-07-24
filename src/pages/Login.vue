@@ -1,4 +1,5 @@
 <script setup>
+import { publicRequest } from '../requestMethod.js';
 </script>
 
 <template>
@@ -16,7 +17,7 @@
                 <div class="card">
                     <div class="card-body">
                         <!-- <h4 class="card-title mb-4">Please fill in the form</h4> -->
-                        <form  method="post" @submit="checkForm" action="https://mercury.swin.edu.au/it000000/formtest.php">
+                        <form>
                             <div class="mb-2">
                                 <label for="usernameInput">Username:</label>
                                 <input type="text" class="form-control" name="usernameInput" id="usernameInput" v-model="usernameInput">
@@ -25,7 +26,7 @@
                                 <label for="passwordInput">Password:</label>
                                 <input type="password" class="form-control" name="passwordInput" id="passwordInput" v-model="passwordInput">
                             </div>
-                            <button type="submit" class="btn btn-outline-dark float-end">Submit</button>
+                            <button type="button" class="btn btn-outline-dark float-end" @click="checkForm">Submit</button>
                         </form>
                     </div>
                 </div>
@@ -64,7 +65,30 @@ export default {
                 e.preventDefault(); // prevent form submission	
                 // scroll to top
                 window.scrollTo(0, 0);
+            } else {
+                this.handleLogin();
             }
+        },
+
+        handleLogin() {
+            const data = {
+                username: this.usernameInput,
+                password: this.passwordInput
+            }
+            console.log(data)
+            publicRequest.post('/auth/login', data)
+            .then(response => {
+                console.log(response);
+
+                this.$store.dispatch('setUser', response.data);
+                this.$store.dispatch('addNotification', "You have logged in.");
+                this.$router.push('/profile');
+
+            })
+            .catch(error => {
+                console.log(error);
+                this.$store.dispatch('addNotification', "Login failed.");
+            })
         }
     }
 }

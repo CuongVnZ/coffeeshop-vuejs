@@ -8,7 +8,7 @@
 			<div class="col-md-12 mb-2">
 				<h1 class="fw-bold">TOP CATEGORIES</h1>
 			</div>
-			<div class="col-md-4 cat-container" v-for="category in categories" :key="category.id">
+			<div class="col-md-4 cat-container my-2" v-for="category in categories" :key="category.id">
 				<img :src="category.img" class="img-fluid cat-img" :alt="category.title">
 				<div class="cat-info container p-3">
 					<h1 class="text-light my-3">{{category.title}}</h1>
@@ -23,20 +23,18 @@
 
 <script>
 export default {
-  watch: {
-  },
-    data() {
-			return {
-				categories: []
-			}
-    },
-    created() {
-			fetch('/data/categories.json')
-			.then(response => response.json())
-			.then(data => {
-				this.categories = data
-			})
-    }
+	data() {
+		return {
+			categories: []
+		}
+	},
+	created() {
+		fetch('/data/categories.json')
+		.then(response => response.json())
+		.then(data => {
+			this.categories = data
+		})
+	}
 }
 </script>
 

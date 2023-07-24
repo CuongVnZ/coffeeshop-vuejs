@@ -10,6 +10,7 @@ import Product from './pages/Product.vue'
 import Cart from './pages/Cart.vue'
 import Login from './pages/Login.vue'
 import Register from './pages/Register.vue'
+import Profile from './pages/Profile.vue'
 
 import store from './vuex/store.js'
 
@@ -20,6 +21,7 @@ const routes = [
     { path: '/cart', component: Cart },
     { path: '/login', component: Login },
     { path: '/register', component: Register },
+    { path: '/profile', component: Profile },
 ]
 
 const router = createRouter({

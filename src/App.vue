@@ -18,7 +18,10 @@ export default {
 		.then(response => response.json())
 		.then(data => {
 			this.$store.dispatch('setProducts', data);
-		})
+		}),
+    
+    // reset notifications
+    this.$store.dispatch('resetNotifications');
 	}
 }
 </script>

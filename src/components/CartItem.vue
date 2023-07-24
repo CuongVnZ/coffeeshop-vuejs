@@ -21,7 +21,7 @@ defineProps({
 			</div>
 			<div class="modal-footer justify-content-between">
 				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-				<button type="button" class="btn btn-danger" data-bs-dismiss="modal" @click="remove(item.id)">
+				<button type="button" class="btn btn-danger" data-bs-dismiss="modal" @click="remove(item.pid)">
 					Remove
 				</button>
 			</div>
@@ -59,7 +59,7 @@ defineProps({
 export default {
   data () {
     return {
-		modalId: 'areYouSure' + '-' + this.item.id
+		modalId: 'areYouSure' + '-' + this.item.pid
     }
   },
   methods: {
