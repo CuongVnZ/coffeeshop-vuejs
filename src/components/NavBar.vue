@@ -25,7 +25,7 @@
               <router-link to="/products" class="nav-link">PRODUCTS</router-link>
             </div>
             <div class="navbar-nav ms-auto">
-              <router-link to="/login" class="nav-link">
+              <router-link to="/profile" class="nav-link">
                 <button class="btn btn-outline-dark">
                     <i class="bi bi-person-circle"></i>
                 </button>

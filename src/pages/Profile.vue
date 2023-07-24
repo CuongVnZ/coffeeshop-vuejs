@@ -1,15 +1,16 @@
 <script setup>
+
 </script>
 
 <template>
 <div class="container mt-5 min-vh-100">
   <div class="row">
     <div class="col-md-3">
-      <div class="card">
+      <div class="card mb-3">
         <div class="card-body text-center">
           <img src="https://via.placeholder.com/150" class="rounded-circle mb-3" alt="Avatar">
-          <h5 class="card-title">{{ this.$store.state.user.currentUser.username }}</h5>
-          <p class="card-text">0947023873</p>
+          <h5 class="card-title">{{ user.username }} <i class="bi bi-patch-check-fill"></i></h5>
+          <p class="card-text">{{ user.phone }}</p>
           <!-- more information -->
           <div class="d-flex justify-content-between">
             <div class="d-flex flex-column">
@@ -24,10 +25,13 @@
         </div>
       </div>
       <!-- ranking card [Brozen, Gold, Diamond] -->
-      <div class="card mt-3">
+      <div class="card mb-3">
         <div class="card-body">
           <h5 class="card-title">Member ranking</h5>
           <p class="card-text">Brozen</p>
+          <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-dark" style="width: 75%">75%</div>
+          </div>
         </div>
       </div>
     </div>
@@ -39,8 +43,15 @@
         <li class="nav-item">
           <a class="nav-link" data-bs-toggle="tab" href="#order-history">Order History</a>
         </li>
+        <!-- logout button on the right -->
+        <li class="nav-item ms-auto">
+          <button class="btn btn-outline-danger" @click="logout">
+            <i class="bi bi-door-closed"></i>
+            Logout
+          </button>
+        </li>
       </ul>
-      <div class="tab-content">
+      <div class="tab-content mb-3">
         <div class="tab-pane fade show active" id="edit-info">
           <form>
             <div class="mb-3">
@@ -49,7 +60,7 @@
             </div>
             <div class="mb-3">
               <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" value="johndoe@example.com">
+              <input type="email" class="form-control" id="email" :value="user.email">
             </div>
             <div class="mb-3">
               <label for="phone" class="form-label">Phone</label>
@@ -100,13 +111,23 @@
 export default {
   data() {
     return {
-      errors: [],
-      usernameInput: '',
-      passwordInput: ''
+      user: {}
     }
   },
   methods: {
-
+    logout() {
+      this.$store.dispatch('logout')
+      this.$store.dispatch('addNotification', 'Logged out successfully');
+      this.$router.push('/login')
+    }
+  },
+  mounted() {
+    if(this.$store.getters.getUser === null) {
+      this.$router.push('/login')
+    } else {
+      this.user = this.$store.getters.getUser;
+      console.log(this.user)
+    }
   }
 }
 </script>
