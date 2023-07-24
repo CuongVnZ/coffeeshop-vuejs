@@ -1,6 +1,5 @@
 <script setup>
 import Product from '../components/Product.vue';
-import 'bootstrap'
 
 defineProps({
 	limit: {
