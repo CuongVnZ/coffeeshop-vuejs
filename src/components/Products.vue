@@ -30,6 +30,7 @@ defineProps({
 export default {
 	data() {
 		return {
+			data: [],
 			products: []
 		}
 	},
@@ -56,25 +57,25 @@ export default {
 	},
   methods: {
     filterProducts() {
-		var data = this.$store.getters.getProducts;
-		this.products = data.filter((product) => {
-			return this.filterCondition(product);
-		});
-		if (this.limit !== -1) {
-			this.products = this.products.slice(0, this.limit);
-		}
+			this.data = this.$store.getters.getProducts;
+			this.products = this.data.filter((product) => {
+				return this.filterCondition(product);
+			});
+			if (this.limit !== -1) {
+				this.products = this.products.slice(0, this.limit);
+			}
     },
-    filterCondition(product, cnt) {
-		if (this.name !== '' && !product.title.toLowerCase().includes(this.name.toLowerCase())) {
-			return false;
-		}
-		if (this.type !== '' && product.category !== this.type) {
-			return false;
-		}
-		if (this.price !== -1 && product.price > this.price) {
-			return false;
-		}
-		return true;
+    filterCondition(product) {
+			if (this.name !== '' && !product.title.toLowerCase().includes(this.name.toLowerCase())) {
+				return false;
+			}
+			if (this.type !== '' && product.category !== this.type) {
+				return false;
+			}
+			if (this.price !== -1 && product.price > this.price) {
+				return false;
+			}
+			return true;
     }
   }
 }

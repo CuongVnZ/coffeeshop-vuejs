@@ -25,17 +25,23 @@
               <router-link to="/products" class="nav-link">PRODUCTS</router-link>
             </div>
             <div class="navbar-nav ms-auto">
-              <router-link to="/profile" class="nav-link">
+              <router-link to="/profile" class="nav-link" v-if="!this.$store.getters.getUser">
                 <button class="btn btn-outline-dark">
-                    <i class="bi bi-person-circle"></i>
+                  <i class="bi bi-door-open-fill"></i>
+                  Login
                 </button>
               </router-link>
-              <!-- <router-link to="/cart" class="nav-link">
+              <router-link to="/profile" class="nav-link" v-if="this.$store.getters.getUser">
                 <button class="btn btn-outline-dark">
-                    <i class="bi bi-heart-fill me-1"></i>
-                    <span class="badge bg-dark text-white ms-1 rounded-pill">4</span>
+                  <i class="bi bi-person-circle"></i>
                 </button>
-              </router-link> -->
+              </router-link>
+              <a class="nav-link" v-if="this.$store.getters.getUser">
+                <button class="btn btn-outline-danger" v-if="this.$store.getters.getUser" @click="logout">
+                  <i class="bi bi-door-closed-fill"></i>
+                  Logout
+                </button>
+              </a>
               <router-link to="/cart" class="nav-link">
                 <button class="btn btn-outline-dark">
                     <i class="bi bi-cart-fill me-1"></i>
@@ -49,6 +55,15 @@
 </template>
 
 <script>
+export default {
+  methods: {
+    logout() {
+      this.$store.dispatch('logout')
+      this.$store.dispatch('addNotification', 'Logged out successfully');
+      this.$router.push('/login')
+    }
+  }
+}
 </script>
 
 <style scoped>

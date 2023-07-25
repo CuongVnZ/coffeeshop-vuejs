@@ -4,30 +4,31 @@ import { publicRequest } from '../requestMethod.js';
 
 <template>
     <div class="container min-vh-100">
-        <div class="row my-5">
-            <div class="col-12">
-                <h1 class="text-center mb-4">LOGIN PAGE</h1>
-            </div>
-            <div class="col-md-6 offset-md-3 mb-3">
+        <div class="row my-5 justify-content-center">
+            <div class="col-md-5 mb-3">
                 <div v-if="errors.length" class="alert alert-danger" role="alert">
                     <ul>
                         <li v-for="e in errors">{{e}}</li>
                     </ul>
                 </div>
                 <div class="card">
+                    <h5 class="card-header">Login</h5>
                     <div class="card-body">
-                        <!-- <h4 class="card-title mb-4">Please fill in the form</h4> -->
                         <form>
-                            <div class="mb-2">
-                                <label for="usernameInput">Username:</label>
-                                <input type="text" class="form-control" name="usernameInput" id="usernameInput" v-model="usernameInput">
-                            </div>
-                            <div class="mb-2">
-                                <label for="passwordInput">Password:</label>
-                                <input type="password" class="form-control" name="passwordInput" id="passwordInput" v-model="passwordInput">
-                            </div>
-                            <button type="button" class="btn btn-outline-dark float-end" @click="checkForm">Submit</button>
+                        <div class="mb-3">
+                            <label for="usernameInput" class="form-label">Username</label>
+                            <input type="text" class="form-control" name="usernameInput" id="usernameInput" v-model="usernameInput" placeholder="Enter your username">
+                        </div>
+                        <div class="mb-3">
+                            <label for="passwordInput" class="form-label">Password</label>
+                            <input type="password" class="form-control" name="passwordInput" id="passwordInput" v-model="passwordInput" placeholder="Enter your password">
+                        </div>
+                        <button type="button" class="btn btn-outline-dark float-end" @click="checkForm">Login</button>
                         </form>
+                    </div>
+                    <div class="card-footer text-center d-flex justify-content-between">
+                        <small><router-link to="/register">Does not have an account?</router-link></small>
+                        <small><a href="#">Forgot password?</a></small>
                     </div>
                 </div>
             </div>

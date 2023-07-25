@@ -9,7 +9,7 @@
       <div class="card mb-3">
         <div class="card-body text-center">
           <img src="https://via.placeholder.com/150" class="rounded-circle mb-3" alt="Avatar">
-          <h5 class="card-title">{{ user.username }} <i class="bi bi-patch-check-fill"></i></h5>
+          <h5 class="card-title">{{ user.name }} <i class="bi bi-patch-check-fill"></i></h5>
           <p class="card-text">{{ user.phone }}</p>
           <!-- more information -->
           <div class="d-flex justify-content-between">
@@ -36,27 +36,24 @@
       </div>
     </div>
     <div class="col-md-9">
-      <ul class="nav nav-tabs">
+      <ul class="nav nav-tabs mb-3">
         <li class="nav-item">
           <a class="nav-link active" data-bs-toggle="tab" href="#edit-info">Edit Information</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" data-bs-toggle="tab" href="#order-history">Order History</a>
         </li>
-        <!-- logout button on the right -->
-        <li class="nav-item ms-auto">
-          <button class="btn btn-outline-danger" @click="logout">
-            <i class="bi bi-door-closed"></i>
-            Logout
-          </button>
-        </li>
       </ul>
       <div class="tab-content mb-3">
         <div class="tab-pane fade show active" id="edit-info">
           <form>
             <div class="mb-3">
+              <label for="name" class="form-label">Username</label>
+              <input type="text" class="form-control" id="name" :value="user.username" disabled>
+            </div>
+            <div class="mb-3">
               <label for="name" class="form-label">Name</label>
-              <input type="text" class="form-control" id="name" value="John Doe">
+              <input type="text" class="form-control" id="name" :value="user.name">
             </div>
             <div class="mb-3">
               <label for="email" class="form-label">Email</label>
@@ -64,9 +61,13 @@
             </div>
             <div class="mb-3">
               <label for="phone" class="form-label">Phone</label>
-              <input type="tel" class="form-control" id="phone" value="(123) 456-7890">
+              <input type="tel" class="form-control" id="phone" :value="user.phone">
             </div>
-            <button type="submit" class="btn btn-outline-dark flex-shrink-0">Save Changes</button>
+            <div class="mb-3">
+              <label for="phone" class="form-label">Shipping Address</label>
+              <input type="tel" class="form-control" id="phone" :value="user.shippingAddress">
+            </div>
+            <button type="submit" class="btn btn-outline-dark flex-shrink-0 float-end">Save Changes</button>
           </form>
         </div>
         <div class="tab-pane fade" id="order-history">
@@ -84,19 +85,19 @@
                 <td>#123</td>
                 <td>July 1, 2023</td>
                 <td>$100.00</td>
-                <td>Delivered</td>
+                <td><label class="bg-success text-white rounded px-3">Delivered</label></td>
               </tr>
               <tr>
                 <td>#456</td>
                 <td>June 15, 2023</td>
                 <td>$50.00</td>
-                <td>Delivered</td>
+                <td><label class="bg-success text-white rounded px-3">Delivered</label></td>
               </tr>
               <tr>
                 <td>#789</td>
                 <td>May 20, 2023</td>
                 <td>$75.00</td>
-                <td>Shipped</td>
+                <td><label class="bg-warning rounded px-3">Shipped</label></td>
               </tr>
             </tbody>
           </table>
@@ -112,13 +113,6 @@ export default {
   data() {
     return {
       user: {}
-    }
-  },
-  methods: {
-    logout() {
-      this.$store.dispatch('logout')
-      this.$store.dispatch('addNotification', 'Logged out successfully');
-      this.$router.push('/login')
     }
   },
   mounted() {

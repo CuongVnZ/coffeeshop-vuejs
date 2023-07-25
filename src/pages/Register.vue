@@ -7,9 +7,6 @@ defineProps({
 <template>
     <div class="container">
         <div class="row my-5">
-            <div class="col-12">
-                <h1 class="text-center mb-4">BECOME A NEW USER</h1>
-            </div>
             <div class="col-md-6 offset-md-3 mb-3">
                 <div v-if="errors.length" class="alert alert-danger" role="alert">
                     <ul>
@@ -17,6 +14,7 @@ defineProps({
                     </ul>
                 </div>
                 <div class="card">
+                    <h5 class="card-header">BECOME A NEW USER</h5>
                     <div class="card-body">
                         <!-- <h4 class="card-title mb-4">Please fill in the form</h4> -->
                         <form  method="post" @submit="checkForm" action="https://mercury.swin.edu.au/it000000/formtest.php">
@@ -99,7 +97,7 @@ defineProps({
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel lorem eget justo aliquet luctus. Duis placerat, mi et scelerisque euismod, massa orci eleifend justo, eget bibendum velit diam ac justo.
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary float-end text-light">Submit</button>
+                            <button type="submit" class="btn btn-outline-dark float-end">Submit</button>
                         </form>
                     </div>
                 </div>
