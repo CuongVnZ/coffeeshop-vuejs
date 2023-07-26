@@ -13,9 +13,9 @@ import { publicRequest, userRequest } from '../requestMethod';
           <li class="list-group-item d-flex justify-content-between lh-sm" v-for="item in items">
             <div>
               <h6 class="my-0">{{ item.title }}</h6>
-              <small class="text-body-secondary">Quantity: {{ item.amount }}</small>
+              <small class="text-body-secondary">Quantity: {{ item.quantity }}</small>
             </div>
-            <span class="text-body-secondary">${{ item.price * item.amount }}</span>
+            <span class="text-body-secondary">${{ item.price * item.quantity }}</span>
           </li>
 
           <li class="list-group-item d-flex justify-content-between bg-body-tertiary">

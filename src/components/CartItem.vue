@@ -42,7 +42,7 @@ defineProps({
 					<div class="d-flex justify-content-between align-items-center">
 						<div class="btn-group">
 							<button type="button" class="btn btn-sm btn-outline-secondary">-</button>
-							<button type="button" class="btn btn-sm btn-outline-secondary">{{ item.amount }}</button>
+							<button type="button" class="btn btn-sm btn-outline-secondary">{{ item.quantity }}</button>
 							<button type="button" class="btn btn-sm btn-outline-secondary">+</button>
 						</div>
 						<button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" :data-bs-target="'#' + modalId">

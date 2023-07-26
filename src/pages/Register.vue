@@ -39,19 +39,9 @@ import { publicRequest } from '../requestMethod';
                             </fieldset>
                             <fieldset>
                                 <legend>Shipping information</legend>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="mb-2">
-                                            <label for="firstNameInput">First Name:</label>
-                                            <input type="text" class="form-control" name="firstNameInput" id="firstNameInput" v-model="firstNameInput">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="mb-2">
-                                            <label for="lastNameInput">Last Name:</label>
-                                            <input type="text" class="form-control" name="lastNameInput" id="lastNameInput" v-model="lastNameInput">
-                                        </div>
-                                    </div>
+                                <div class="mb-2">
+                                    <label for="nameInput">Full Name:</label>
+                                    <input type="text" class="form-control" name="nameInput" id="nameInput" v-model="nameInput">
                                 </div>
 
                                 <div class="mb-2">
@@ -109,8 +99,7 @@ export default {
     data() {
         return {
             errors: [],
-            firstNameInput: '',
-            lastNameInput: '',
+            nameInput: '',
             usernameInput: '',
             passwordInput: '',
             confirmPasswordInput: '',
@@ -126,24 +115,6 @@ export default {
         checkForm(e) {
             var result = true;
             this.errors = [];
-
-            // Validate first name
-            if (!this.firstNameInput.trim()) {
-                result = false;
-                this.errors.push("Please enter first name.");
-            } else if (!/^[A-Za-z]+$/.test(this.firstNameInput.trim())) {
-                result = false;
-                this.errors.push("First name must contain letters only.");
-            }
-
-            // Validate last name
-            if (!this.lastNameInput.trim()) {
-                result = false;
-                this.errors.push("Please enter last name.");
-            } else if (!/^[A-Za-z]+$/.test(this.lastNameInput.trim())) {
-                result = false;
-                this.errors.push("Last name must contain letters only.");
-            }
 
             // Validate username
             if (!this.usernameInput.trim() || this.usernameInput.trim().length < 3) {
@@ -212,7 +183,7 @@ export default {
             publicRequest.post('/auth/register', {
                 username: this.usernameInput,
                 password: this.passwordInput,
-                name: this.firstNameInput + ' ' + this.lastNameInput,
+                name: this.nameInput,
                 email: this.emailInput,
                 phone: this.mobileNumberInput,
                 shippingAddress: shippingAddress

@@ -23,7 +23,7 @@ import { publicRequest } from '../requestMethod.js';
                             <label for="passwordInput" class="form-label">Password</label>
                             <input type="password" class="form-control" name="passwordInput" id="passwordInput" v-model="passwordInput" placeholder="Enter your password">
                         </div>
-                        <button type="button" class="btn btn-outline-dark float-end" @click="checkForm">Login</button>
+                        <button type="button" class="btn btn-outline-dark float-end" @click="checkForm" :disabled="isLoading">Login</button>
                         </form>
                     </div>
                     <div class="card-footer text-center d-flex justify-content-between">
@@ -42,7 +42,8 @@ export default {
         return {
             errors: [],
             usernameInput: '',
-            passwordInput: ''
+            passwordInput: '',
+            isLoading: false,
         }
     },
     methods: {
@@ -72,15 +73,13 @@ export default {
         },
 
         handleLogin() {
+            this.isLoading = true;
             const data = {
                 username: this.usernameInput,
                 password: this.passwordInput
             }
-            console.log(data)
             publicRequest.post('/auth/login', data)
             .then(response => {
-                console.log(response);
-
                 this.$store.dispatch('setUser', response.data);
                 this.$store.dispatch('addNotification', "You have logged in.");
                 this.$router.push('/profile');
@@ -88,6 +87,7 @@ export default {
             })
             .catch(error => {
                 console.log(error);
+                this.isLoading = false;
                 this.$store.dispatch('addNotification', "Login failed.");
             })
         }

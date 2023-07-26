@@ -6,7 +6,7 @@ const state = {
             "img": "/images/products/dragon-eyes-chia-seeds-tea.png",
             "price": "2.05",
             "title": "Dragon Eyes (Longan) Chia Seeds Tea",
-            "amount": 5
+            "quantity": 5
         }
     ]
 }
@@ -15,7 +15,7 @@ const mutations = {
   ADD_TO_CART(state, item) {
     const index = state.data.findIndex(p => p.pid === item.pid)
     if (index !== -1) {
-      state.data[index].amount += item.amount
+      state.data[index].quantity += item.quantity
     } else {
       state.data.push(item)
     }
@@ -52,7 +52,7 @@ const getters = {
 	},
   getCartTotal: (state) => {
     return state.data.reduce((acc, cur) => {
-      return acc + (cur.amount * cur.price)
+      return acc + (cur.quantity * cur.price)
     }, 0)
   }
 }

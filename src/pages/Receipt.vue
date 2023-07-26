@@ -35,7 +35,7 @@ import { userRequest } from '../requestMethod';
                     <p class="text-muted mb-0 small">Qty: {{ product.quantity }}</p>
                   </div>
                   <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class="text-muted mb-0 small">$ {{ product.quantity * product.price }}</p>
+                    <p class="text-muted mb-0 small">${{ product.quantity * product.price }}</p>
                   </div>
                 </div>
                 <hr class="mb-4" style="background-color: #e0e0e0; opacity: 1;">
@@ -60,7 +60,7 @@ import { userRequest } from '../requestMethod';
 
             <div class="d-flex justify-content-between pt-2">
               <p class="fw-bold mb-0">Order Details</p>
-              <p class="text-muted mb-0"><span class="fw-bold me-4">Total</span> ${{ order.total }}</p>
+              <p class="text-muted mb-0"><span class="fw-bold me-4">Subtotal</span> ${{ order.total }}</p>
             </div>
 
             <div class="d-flex justify-content-between pt-2">
@@ -69,13 +69,13 @@ import { userRequest } from '../requestMethod';
             </div>
 
             <div class="d-flex justify-content-between mb-5">
-              <p class="text-muted mb-0">Recepits Voucher : 18KU-62IIK</p>
-              <p class="text-muted mb-0"><span class="fw-bold me-4">Delivery Charges</span> Free</p>
+              <p class="text-muted mb-0">Ship to: {{ order.shippingAddress }}</p>
+              <p class="text-muted mb-0"><span class="fw-bold me-4">Shipping</span> $0</p>
             </div>
           </div>
           <div class="card-footer border-0 px-4 py-3 bg-dark">
             <h5 class="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">Total
-              paid: <span class="h2 mb-0 ms-2">${{ order.total }}</span></h5>
+              paid: <span class="mb-0 ms-2">${{ order.total }}</span></h5>
           </div>
         </div>
       </div>
