@@ -18,7 +18,7 @@ import Products from '../components/Products.vue';
 					<div class="d-flex">
 						<div class="btn-group me-3">
 							<button type="button" class="btn btn-outline-dark" @click="decrease">-</button>
-							<button type="button" class="btn btn-outline-dark">{{ amount }}</button>
+							<button type="button" class="btn btn-outline-dark">{{ quantity }}</button>
 							<button type="button" class="btn btn-outline-dark" @click="increase">+</button>
 						</div>
 						<button class="btn btn-outline-dark flex-shrink-0" type="button" @click="addToCart(product.pid)">
@@ -54,7 +54,7 @@ export default {
 				img: '',
 				category: ''
 			},
-			amount: 1
+			quantity: 1
 		}
 	},
 	created () {
@@ -74,14 +74,14 @@ export default {
 			this.product = this.$store.getters.getProductById(this.$route.params.id)
 		},
 		addToCart() {
-			this.$store.dispatch('addToCart', { ...this.product, amount: this.amount })
+			this.$store.dispatch('addToCart', { ...this.product, quantity: this.quantity })
 			this.$store.dispatch('addNotification', "You added item(s) to your cart.");
 		},
 		increase() {
-			this.amount++
+			this.quantity++
 		},
 		decrease() {
-			if (this.amount > 1) this.amount--
+			if (this.quantity > 1) this.quantity--
 		}
 	}
 }
