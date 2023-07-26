@@ -1,7 +1,5 @@
 <script setup>
-defineProps({
-
-})
+import { publicRequest } from '../requestMethod';
 </script>
 
 <template>
@@ -17,7 +15,7 @@ defineProps({
                     <h5 class="card-header">BECOME A NEW USER</h5>
                     <div class="card-body">
                         <!-- <h4 class="card-title mb-4">Please fill in the form</h4> -->
-                        <form  method="post" @submit="checkForm" action="https://mercury.swin.edu.au/it000000/formtest.php">
+                        <form>
                             <fieldset>
                                 <legend>Account information</legend>
                                 <div class="mb-2">
@@ -97,7 +95,7 @@ defineProps({
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel lorem eget justo aliquet luctus. Duis placerat, mi et scelerisque euismod, massa orci eleifend justo, eget bibendum velit diam ac justo.
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-outline-dark float-end">Submit</button>
+                            <button type="button" class="btn btn-outline-dark float-end" @click="checkForm">Submit</button>
                         </form>
                     </div>
                 </div>
@@ -189,23 +187,43 @@ export default {
                 this.errors.push("Suburb must be at most 20 characters.");
             }
 
-            // Validate postcode
-            if (!this.postcodeInput.trim() || !/^\d{4}$/.test(this.postcodeInput.trim())) {
-                result = false;
-                this.errors.push("Please enter a valid 4-digit postcode.");
-            }
+            // // Validate postcode
+            // if (!this.postcodeInput.trim() || !/^\d{4}$/.test(this.postcodeInput.trim())) {
+            //     result = false;
+            //     this.errors.push("Please enter a valid 4-digit postcode.");
+            // }
 
-            // Validate mobile number
-            if (!this.mobileNumberInput.trim() || !/^04\d{8}$/.test(this.mobileNumberInput.trim())) {
-                result = false;
-                this.errors.push("Please enter a valid 10-digit mobile number starting with 04.");
-            }
+            // // Validate mobile number
+            // if (!this.mobileNumberInput.trim() || !/^04\d{8}$/.test(this.mobileNumberInput.trim())) {
+            //     result = false;
+            //     this.errors.push("Please enter a valid 10-digit mobile number starting with 04.");
+            // }
 
             if (!result) {
                 e.preventDefault(); // prevent form submission	
                 // scroll to top
                 window.scrollTo(0, 0);
+                return;
             }
+
+            // combine streetAddressInput, suburbInput, postcodeInput into one shippingAddress
+            var shippingAddress = this.streetAddressInput + ', ' + this.suburbInput + ', ' + this.postcodeInput;
+
+            publicRequest.post('/auth/register', {
+                username: this.usernameInput,
+                password: this.passwordInput,
+                name: this.firstNameInput + ' ' + this.lastNameInput,
+                email: this.emailInput,
+                phone: this.mobileNumberInput,
+                shippingAddress: shippingAddress
+            }).then(res => {
+                console.log(res);
+                this.$store.dispatch('addNotification', 'Successfully registered!');
+                this.$router.push('/login');
+            }).catch(err => {
+                console.log(err);
+                this.$store.dispatch('addNotification', 'Failed to register!');
+            });
         }
     }
 }

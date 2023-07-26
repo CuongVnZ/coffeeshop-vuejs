@@ -1,10 +1,10 @@
 <script setup>
-
+import { userRequest } from '../requestMethod.js';
 </script>
 
 <template>
 <div class="container mt-5 min-vh-100">
-  <div class="row">
+  <div class="row mb-5">
     <div class="col-md-3">
       <div class="card mb-3">
         <div class="card-body text-center">
@@ -53,21 +53,21 @@
             </div>
             <div class="mb-3">
               <label for="name" class="form-label">Name</label>
-              <input type="text" class="form-control" id="name" :value="user.name">
+              <input type="text" class="form-control" id="name" v-model="nameInput">
             </div>
             <div class="mb-3">
               <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" :value="user.email">
+              <input type="email" class="form-control" id="email" v-model="emailInput">
             </div>
             <div class="mb-3">
               <label for="phone" class="form-label">Phone</label>
-              <input type="tel" class="form-control" id="phone" :value="user.phone">
+              <input type="tel" class="form-control" id="phone" v-model="phoneInput">
             </div>
             <div class="mb-3">
               <label for="phone" class="form-label">Shipping Address</label>
-              <input type="tel" class="form-control" id="phone" :value="user.shippingAddress">
+              <input type="tel" class="form-control" id="phone" v-model="shippingAddressInput">
             </div>
-            <button type="submit" class="btn btn-outline-dark flex-shrink-0 float-end">Save Changes</button>
+            <button type="button" class="btn btn-outline-dark flex-shrink-0 float-end" @click="saveChanges">Save Changes</button>
           </form>
         </div>
         <div class="tab-pane fade" id="order-history">
@@ -112,7 +112,11 @@
 export default {
   data() {
     return {
-      user: {}
+      user: {},
+      nameInput: '',
+      emailInput: '',
+      phoneInput: '',
+      shippingAddressInput: ''
     }
   },
   mounted() {
@@ -120,8 +124,31 @@ export default {
       this.$router.push('/login')
     } else {
       this.user = this.$store.getters.getUser;
-      console.log(this.user)
+      this.nameInput = this.user.name;
+      this.emailInput = this.user.email;
+      this.phoneInput = this.user.phone;
+      this.shippingAddressInput = this.user.shippingAddress;
     }
+  },
+  methods: {
+    saveChanges() {
+      userRequest.put('/users/'+this.user._id, {
+        name: this.nameInput,
+        email: this.emailInput,
+        phone: this.phoneInput,
+        shippingAddress: this.shippingAddressInput
+      })
+      .then(res => {
+        console.log(res.data);
+        this.$store.dispatch('setUser', res.data);
+        this.user = res.data;
+        this.$store.dispatch('addNotification', 'Changes saved.');
+      })
+      .catch(err => {
+        this.$store.dispatch('addNotification', 'Error: '+err.response.data.message);
+      })
+    },
+
   }
 }
 </script>

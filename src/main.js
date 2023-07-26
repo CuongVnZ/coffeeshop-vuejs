@@ -11,6 +11,8 @@ import Cart from './pages/Cart.vue'
 import Login from './pages/Login.vue'
 import Register from './pages/Register.vue'
 import Profile from './pages/Profile.vue'
+import Checkout from './pages/Checkout.vue'
+import Receipt from './pages/Receipt.vue'
 
 import store from './vuex/store.js'
 
@@ -22,6 +24,8 @@ const routes = [
     { path: '/login', component: Login },
     { path: '/register', component: Register },
     { path: '/profile', component: Profile },
+    { path: '/checkout', component: Checkout },
+    { path: '/receipt/:id', component: Receipt },
 ]
 
 const router = createRouter({

@@ -25,6 +25,9 @@ const mutations = {
     if (index !== -1) {
       state.data.splice(index, 1)
     }
+  },
+  RESET_CART(state) {
+    state.data = []
   }
 }
 
@@ -34,6 +37,9 @@ const actions = {
   },
   removeFromCart({ commit }, payload) {
     commit('REMOVE_FROM_CART', payload)
+  },
+  resetCart({ commit }) {
+    commit('RESET_CART')
   }
 }
 
@@ -43,7 +49,12 @@ const getters = {
   },
 	getCartSize: (state) => {
 		return state.data.length
-	}
+	},
+  getCartTotal: (state) => {
+    return state.data.reduce((acc, cur) => {
+      return acc + (cur.amount * cur.price)
+    }, 0)
+  }
 }
 
 export default {

@@ -5,16 +5,12 @@ const BASE_URL = import.meta.env.VITE_BACKEND_SERVER || "https://eshop-mongo-api
 //   JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser
 //     .accessToken || "";
 
-const user = JSON.parse(localStorage.getItem("vuex"))?.user;
-console.log(user)
-const currentUser = user && user.currentUser;
-var TOKEN = currentUser?.accessToken;
-
-export const updateToken = () => {
+var getToken = () => {
   const user = JSON.parse(localStorage.getItem("vuex"))?.user;
+  console.log(user)
   const currentUser = user && user.currentUser;
-  if (!currentUser) return
-  TOKEN = currentUser.accessToken || "";
+  if (!currentUser) return "";
+  var TOKEN = currentUser.accessToken || "";
   return TOKEN;
 };
 
@@ -24,5 +20,5 @@ export const publicRequest = axios.create({
 
 export const userRequest = axios.create({
   baseURL: BASE_URL,
-  headers: { token: `Bearer ${updateToken()}` },
+  headers: { token: `Bearer ${getToken()}` },
 });

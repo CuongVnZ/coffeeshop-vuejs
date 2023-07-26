@@ -24,24 +24,29 @@ import CartItem from '../components/CartItem.vue';
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             Shipping
-                            <span>Free</span>
+                            <span>{{ shipping }}</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Tax
-                            <span>$9.99</span>
+                            Discount
+                            <span>$0</span>
                         </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <li class="list-group-item d-flex justify-content-between align-items-center" placeholder="Note your order">
+                            <strong>Total</strong>
+                            <strong>${{ total }}</strong>
+                        </li>
+                        <!-- <li class="list-group-item d-flex justify-content-between align-items-center">
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Discount code" aria-label="Discount code" aria-describedby="button-addon2">
                                 <button class="btn btn-outline-secondary" type="button" id="button-addon2">Apply</button>
                             </div>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <strong>Total</strong>
-                            <strong>${{ total }}</strong>
-                        </li>
+                            <textarea class="form-control" id="comment" rows="3" placeholder="Enter your order notes..."></textarea>
+                        </li> -->
                     </ul>
-                    <button type="button" class="btn btn-lg btn-outline-dark flex-shrink-0">Checkout</button>
+                    <router-link to="/checkout">
+                        <button type="button" class="btn btn-outline-dark flex-shrink-0 float-end">GO TO CHECKOUT</button>
+                    </router-link>
                 </div>
             </div>
         </div>
@@ -65,19 +70,15 @@ export default {
 	},
     methods: {
         calculateTotal() {
-            this.subTotal = this.cart.reduce((subTotal, item) => {
-                return subTotal + (item.price * item.amount);
-            }, 0);
+            this.subTotal = this.$store.getters.getCartTotal;
+            this.total = this.subTotal + this.shipping;
+            this.total = this.total.toFixed(2);
         }
     },
     watch: {
 		'$store.getters.getCartSize': function() {
 			this.calculateTotal();
-		},
-        subTotal: function() {
-            this.total = this.subTotal + this.shipping;
-            this.total = this.total.toFixed(2);
-        }
+		}
     }
 }
 </script>
