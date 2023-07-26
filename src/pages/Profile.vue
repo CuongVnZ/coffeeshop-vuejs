@@ -88,16 +88,16 @@ import { userRequest } from '../requestMethod.js';
                 <td><label class="bg-success text-white rounded px-3">Delivered</label></td>
               </tr>
               <tr>
-                <td>#456</td>
-                <td>June 15, 2023</td>
-                <td>$50.00</td>
-                <td><label class="bg-success text-white rounded px-3">Delivered</label></td>
-              </tr>
-              <tr>
                 <td>#789</td>
                 <td>May 20, 2023</td>
                 <td>$75.00</td>
                 <td><label class="bg-warning rounded px-3">Shipped</label></td>
+              </tr>
+              <tr v-for="order in orders">
+                <td><router-link :to="'/receipt/' + order._id">#{{order._id}}</router-link></td>
+                <td>{{ order.createdAt }}</td>
+                <td>${{ order.total }}</td>
+                <td><label class="bg-secondary text-white rounded px-3">{{ order.status }}</label></td>
               </tr>
             </tbody>
           </table>
@@ -116,7 +116,9 @@ export default {
       nameInput: '',
       emailInput: '',
       phoneInput: '',
-      shippingAddressInput: ''
+      shippingAddressInput: '',
+
+      orders: []
     }
   },
   mounted() {
@@ -129,6 +131,14 @@ export default {
       this.phoneInput = this.user.phone;
       this.shippingAddressInput = this.user.shippingAddress;
     }
+
+    userRequest.get('/orders/find/' + this.user._id)
+    .then(res => {
+      this.orders = res.data;
+    })
+    .catch(err => {
+      console.log(err);
+    })
   },
   methods: {
     saveChanges() {
