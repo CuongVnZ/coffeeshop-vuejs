@@ -27,7 +27,7 @@ import { publicRequest, userRequest } from '../requestMethod';
           </li>
           <li class="list-group-item d-flex justify-content-between">
             <span>Total (USD)</span>
-            <strong>${{ this.total }}</strong>
+            <strong>${{ total }}</strong>
           </li>
         </ul>
 
