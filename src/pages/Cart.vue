@@ -16,11 +16,11 @@ import CartItem from '../components/CartItem.vue';
         <div class="col-md-4">
             <div class="card mb-3 sticky-top summary">
                 <div class="card-body">
-                    <h5 class="card-title">Order Summary</h5>
+                    <h5 class="card-title">Cost Estimate</h5>
                     <ul class="list-group list-group-flush my-3">
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             Subtotal
-                            <span>${{ subTotal.toFixed(2) }}</span>
+                            <span>{{ subTotal.toFixed(2) }}</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             Shipping
@@ -28,21 +28,12 @@ import CartItem from '../components/CartItem.vue';
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             Discount
-                            <span>$0</span>
+                            <span>0</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center" placeholder="Note your order">
                             <strong>Total</strong>
                             <strong>${{ total }}</strong>
                         </li>
-                        <!-- <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Discount code" aria-label="Discount code" aria-describedby="button-addon2">
-                                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Apply</button>
-                            </div>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <textarea class="form-control" id="comment" rows="3" placeholder="Enter your order notes..."></textarea>
-                        </li> -->
                     </ul>
                     <router-link to="/checkout">
                         <button type="button" class="btn btn-outline-dark flex-shrink-0 float-end">GO TO CHECKOUT</button>

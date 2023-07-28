@@ -81,6 +81,12 @@ import { userRequest } from '../requestMethod.js';
               </tr>
             </thead>
             <tbody>
+              <tr v-for="(order, index) in orders">
+                <td><router-link :to="'/receipt/' + order._id">#{{orders.length-index}}</router-link></td>
+                <td>{{ new Date(order.createdAt).toLocaleString() }}</td>
+                <td>${{ order.total }}</td>
+                <td><label class="bg-secondary text-white rounded px-3">{{ order.status }}</label></td>
+              </tr>
               <tr>
                 <td>#123</td>
                 <td>July 1, 2023</td>
@@ -92,12 +98,6 @@ import { userRequest } from '../requestMethod.js';
                 <td>May 20, 2023</td>
                 <td>$75.00</td>
                 <td><label class="bg-warning rounded px-3">Shipped</label></td>
-              </tr>
-              <tr v-for="order in orders">
-                <td><router-link :to="'/receipt/' + order._id">#{{order._id}}</router-link></td>
-                <td>{{ order.createdAt }}</td>
-                <td>${{ order.total }}</td>
-                <td><label class="bg-secondary text-white rounded px-3">{{ order.status }}</label></td>
               </tr>
             </tbody>
           </table>
@@ -132,9 +132,15 @@ export default {
       this.shippingAddressInput = this.user.shippingAddress;
     }
 
-    userRequest.get('/orders/find/' + this.user._id)
+    var token = this.$store.getters.getToken;
+    userRequest(token).get('/orders/find/' + this.user._id)
     .then(res => {
       this.orders = res.data;
+
+      // sort orders by date
+      this.orders.sort((a, b) => {
+        return new Date(b.createdAt) - new Date(a.createdAt);
+      })
     })
     .catch(err => {
       console.log(err);
@@ -143,7 +149,8 @@ export default {
   },
   methods: {
     saveChanges() {
-      userRequest.put('/users/'+this.user._id, {
+      var token = this.$store.getters.getToken;
+      userRequest(token).put('/users/'+this.user._id, {
         name: this.nameInput,
         email: this.emailInput,
         phone: this.phoneInput,
@@ -151,7 +158,7 @@ export default {
       })
       .then(res => {
         console.log(res.data);
-        this.$store.dispatch('setUser', res.data);
+        this.$store.dispatch('updateUser', res.data);
         this.user = res.data;
         this.$store.dispatch('addNotification', 'Changes saved.');
       })

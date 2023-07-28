@@ -96,8 +96,8 @@ export default {
   mounted() {
     var id = this.$route.params.id
     var uid = this.$store.getters.getUser._id;
-    console.log(uid)
-    this.items = userRequest.get('/orders/find/' + uid + '/' + id)
+    var token = this.$store.getters.getToken;
+    this.items = userRequest(token).get('/orders/find/' + uid + '/' + id)
     .then((response) => {
       this.order = response.data
       var items = response.data.items;

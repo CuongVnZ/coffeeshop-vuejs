@@ -24,9 +24,15 @@ import Products from '../components/Products.vue';
                 <label for="name">Name:</label>
                 <input type="text" class="form-control" id="name" v-model="name">
               </div>
-              <div class="form-group mb-3">
+              <div class="row form-group mb-3">
                 <label for="price">Price:</label>
-                <input type="text" class="form-control" id="price" v-model="price">
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" id="priceMin" v-model="priceMin">
+                </div>
+                <div class="col-sm-1"><label>-</label></div>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control col-6" id="priceMax" v-model="priceMax">
+                </div>
               </div>
             </div>
           </div>
@@ -47,7 +53,8 @@ export default {
 		return {
       type: '',
 			name: '',
-			price: -1
+			priceMin: 0,
+      priceMax: 99
 		}
 	}
 }

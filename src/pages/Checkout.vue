@@ -139,7 +139,8 @@ export default {
   methods: {
     checkout() {
       this.calculateTotal();
-      userRequest.post('/orders', {
+      var token = this.$store.getters.getToken;
+      userRequest(token).post('/orders', {
         customerId: this.user._id,
         items: this.items,
         shipping: 9.99,
