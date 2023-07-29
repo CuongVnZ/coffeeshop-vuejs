@@ -45,7 +45,7 @@
               <router-link to="/cart" class="nav-link">
                 <button class="btn btn-outline-dark">
                     <i class="bi bi-cart-fill me-1"></i>
-                    <span class="badge bg-dark text-white ms-1 rounded-pill">{{this.$store.getters.getCartSize}}</span>
+                    <span class="badge bg-dark text-white ms-1 rounded-pill">{{ this.$store.getters.getCartSize }}</span>
                 </button>
               </router-link>
             </div>

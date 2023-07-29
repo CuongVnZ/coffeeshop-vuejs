@@ -12,7 +12,7 @@ import Products from '../components/Products.vue';
             <div class="card-body">
               <h3 class="card-title mb-3">SEARCH BY</h3>
               <div class="form-group">
-                <label for="type">Type:</label>
+                <label for="type">Category:</label>
                 <select class="form-control mb-3" id="type" v-model="type">
                   <option value="">All</option>
                   <option value="coffee">Coffee</option>
@@ -21,7 +21,7 @@ import Products from '../components/Products.vue';
                 </select>
               </div>
               <div class="form-group mb-3">
-                <label for="name">Name:</label>
+                <label for="name">Product Name:</label>
                 <input type="text" class="form-control" id="name" v-model="name">
               </div>
               <div class="row form-group mb-3">
