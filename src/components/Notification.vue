@@ -1,4 +1,6 @@
 <script setup>
+import { Toast } from 'bootstrap';
+
 defineProps({
 	toastId: {
 		type: Number,
@@ -28,7 +30,7 @@ defineProps({
 <script>
 export default {
   mounted () {
-    var toast = bootstrap.Toast.getOrCreateInstance(document.getElementById(this.toastId))
+    var toast = Toast.getOrCreateInstance(document.getElementById(this.toastId))
     toast.show()
   }
 }
