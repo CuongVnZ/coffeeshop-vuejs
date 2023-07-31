@@ -21,7 +21,7 @@ import Products from '../components/Products.vue';
 							<button type="button" class="btn btn-outline-dark">{{ quantity }}</button>
 							<button type="button" class="btn btn-outline-dark" @click="increase">+</button>
 						</div>
-						<button class="btn btn-outline-dark flex-shrink-0" type="button" @click="addToCart(product.pid)">
+						<button class="btn btn-outline-dark flex-shrink-0" type="button" @click="addToCart()">
 							<i class="bi-cart-fill me-1"></i>
 							Add to cart
 						</button>
@@ -70,8 +70,10 @@ export default {
 	},
 	methods: {
 		loadProduct() {
-			if(this.$store.getters.getProductSize == 0) return;
 			this.product = this.$store.getters.getProductById(this.$route.params.id)
+			if (this.product === undefined) {
+				this.$router.push('/');
+			}
 		},
 		addToCart() {
 			this.$store.dispatch('addToCart', { ...this.product, quantity: this.quantity })

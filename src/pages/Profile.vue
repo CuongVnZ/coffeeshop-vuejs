@@ -163,7 +163,8 @@ export default {
         this.$store.dispatch('addNotification', 'Changes saved.');
       })
       .catch(err => {
-        this.$store.dispatch('addNotification', 'Error: '+err.response.data.message);
+        console.log(err);
+        this.$store.dispatch('addNotification', 'Error: ' + err);
       })
     },
 

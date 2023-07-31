@@ -75,15 +75,15 @@ import { publicRequest, userRequest } from '../requestMethod';
           <h4 class="mb-3">Payment Method</h4>
           <div class="my-3">
             <div class="form-check">
-              <input id="credit" name="paymentMethod" type="radio" class="form-check-input" v-model="methodInput" checked required>
+              <input id="credit" value="Credit card" type="radio" class="form-check-input" v-model="methodInput" checked>
               <label class="form-check-label" for="credit">Credit card</label>
             </div>
             <div class="form-check">
-              <input id="debit" name="paymentMethod" type="radio" class="form-check-input" v-model="methodInput" required>
+              <input id="debit" value="Debit card" type="radio" class="form-check-input" v-model="methodInput">
               <label class="form-check-label" for="debit">Debit card</label>
             </div>
             <div class="form-check">
-              <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" v-model="methodInput" required>
+              <input id="paypal" value="PayPal" type="radio" class="form-check-input" v-model="methodInput">
               <label class="form-check-label" for="paypal">PayPal</label>
             </div>
           </div>
@@ -113,7 +113,7 @@ import { publicRequest, userRequest } from '../requestMethod';
 
           <hr class="my-4">
 
-          <button class="w-100 btn btn-outline-dark flex-shrink-0 btn-lg" type="button" @click="checkout">Continue to checkout</button>
+          <button class="w-100 btn btn-outline-dark flex-shrink-0 btn-lg" type="button" @click="checkout">Go to payment</button>
         </form>
       </div>
     </div>
@@ -130,6 +130,12 @@ export default {
       methodInput: 'Paypal',
       total: 0,
       shipping: 9.99,
+    }
+  },
+  beforeCreate() {
+    if (!this.$store.getters.getToken) {
+      this.$router.push('/login');
+      this.$store.dispatch('addNotification', 'Please login to continue.');
     }
   },
   mounted() {

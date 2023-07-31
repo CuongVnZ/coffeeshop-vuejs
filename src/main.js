@@ -8,28 +8,22 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
 import App from './App.vue'
-import Home from './pages/Home.vue'
-import Products from './pages/Products.vue'
-import Product from './pages/Product.vue'
-import Cart from './pages/Cart.vue'
-import Login from './pages/Login.vue'
-import Register from './pages/Register.vue'
-import Profile from './pages/Profile.vue'
-import Checkout from './pages/Checkout.vue'
-import Receipt from './pages/Receipt.vue'
+import * as page from './pages'
+
+import exampleDirective from './directives/exampleDirective'
 
 import store from './vuex/store.js'
 
 const routes = [
-    { path: '/', component: Home },
-    { path: '/products', component: Products },
-    { path: '/product/:id', component: Product },
-    { path: '/cart', component: Cart },
-    { path: '/login', component: Login },
-    { path: '/register', component: Register },
-    { path: '/profile', component: Profile },
-    { path: '/checkout', component: Checkout },
-    { path: '/receipt/:id', component: Receipt },
+    { path: '/', component: page.Home },
+    { path: '/products', component: page.Products },
+    { path: '/product/:id', component: page.Product },
+    { path: '/cart', component: page.Cart },
+    { path: '/login', component: page.Login },
+    { path: '/register', component: page.Register },
+    { path: '/profile', component: page.Profile },
+    { path: '/checkout', component: page.Checkout },
+    { path: '/receipt/:id', component: page.Receipt },
 ]
 
 const router = createRouter({
@@ -41,6 +35,11 @@ const router = createRouter({
 })
 
 const app = createApp(App)
+
+
 app.use(store)
 app.use(router)
+
+app.directive('example-directive', exampleDirective)
+
 app.mount('#app')

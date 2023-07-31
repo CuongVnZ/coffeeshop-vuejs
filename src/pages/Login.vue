@@ -38,60 +38,60 @@ import { publicRequest } from '../requestMethod.js';
 
 <script>
 export default {
-    data() {
-        return {
-            errors: [],
-            usernameInput: '',
-            passwordInput: '',
-            isLoading: false,
-        }
-    },
-    methods: {
-        checkForm(e) {
-            var result = true;
-            this.errors = [];
-
-            // Validate username
-            if (!this.usernameInput.trim()) {
-                result = false;
-                this.errors.push("Please enter a username.");
-            }
-
-            // Validate password
-            if (!this.passwordInput.trim()) {
-                result = false;
-                this.errors.push("Please enter a password.");
-            }
-
-            if (!result) {
-                e.preventDefault(); // prevent form submission	
-                // scroll to top
-                window.scrollTo(0, 0);
-            } else {
-                this.handleLogin();
-            }
-        },
-
-        handleLogin() {
-            this.isLoading = true;
-            const data = {
-                username: this.usernameInput,
-                password: this.passwordInput
-            }
-            publicRequest.post('/auth/login', data)
-            .then(response => {
-                this.$store.dispatch('setUser', response.data);
-                this.$store.dispatch('addNotification', "You have logged in.");
-                this.$router.push('/profile');
-
-            })
-            .catch(error => {
-                console.log(error);
-                this.isLoading = false;
-                this.$store.dispatch('addNotification', "Login failed.");
-            })
-        }
+  data() {
+    return {
+      errors: [],
+      usernameInput: '',
+      passwordInput: '',
+      isLoading: false,
     }
+  },
+  methods: {
+    checkForm(e) {
+      var result = true;
+      this.errors = [];
+
+      // Validate username
+      if (!this.usernameInput.trim()) {
+          result = false;
+          this.errors.push("Please enter a username.");
+      }
+
+      // Validate password
+      if (!this.passwordInput.trim()) {
+          result = false;
+          this.errors.push("Please enter a password.");
+      }
+
+      if (!result) {
+          e.preventDefault(); // prevent form submission	
+          // scroll to top
+          window.scrollTo(0, 0);
+      } else {
+          this.handleLogin();
+      }
+    },
+
+    handleLogin() {
+      this.isLoading = true;
+      const data = {
+        username: this.usernameInput,
+        password: this.passwordInput
+      }
+      publicRequest.post('/auth/login', data)
+      .then(response => {
+        this.$store.dispatch('setUser', response.data);
+        this.$store.dispatch('addNotification', "You have logged in.");
+        this.$router.push('/profile');
+
+      })
+      .catch(error => {
+        console.log(error);
+        this.isLoading = false;
+        this.$store.dispatch('addNotification', "Login failed.");
+      })
+    }
+  }
 }
 </script>
 
