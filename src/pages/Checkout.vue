@@ -38,7 +38,7 @@ import { publicRequest, userRequest } from '../requestMethod';
           </div>
         </div>
         <div class="card p-2">
-          <textarea class="form-control" id="comment" rows="3" placeholder="Enter your order notes..." v-modal="noteInput"></textarea>
+          <textarea class="form-control" id="comment" rows="3" placeholder="Enter your order notes..." v-model="noteInput"></textarea>
         </div>
       </div>
       <div class="col-md-7 col-lg-8">
@@ -135,7 +135,10 @@ export default {
   beforeCreate() {
     if (!this.$store.getters.getToken) {
       this.$router.push('/login');
-      this.$store.dispatch('addNotification', 'Please login to continue.');
+      this.$store.dispatch('addNotification', 'Please login to continue!');
+    } else if (this.$store.getters.getCart.length == 0) {
+      this.$router.push('/products');
+      this.$store.dispatch('addNotification', 'Your cart is empty!');
     }
   },
   mounted() {
@@ -145,6 +148,7 @@ export default {
   methods: {
     checkout() {
       this.calculateTotal();
+
       var token = this.$store.getters.getToken;
       userRequest(token).post('/orders', {
         customerId: this.user._id,

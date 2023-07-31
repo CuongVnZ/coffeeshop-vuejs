@@ -25,11 +25,11 @@ import Products from '../components/Products.vue';
                 <input type="text" class="form-control" id="name" v-model="name">
               </div>
               <div class="row form-group mb-3">
-                <label for="price">Price:</label>
+                <label for="price">Price (min - max):</label>
                 <div class="col-sm-5">
                   <input type="text" class="form-control" id="priceMin" v-model="priceMin">
                 </div>
-                <div class="col-sm-1"><label>-</label></div>
+                <label class="col-sm-2 text-center">-</label>
                 <div class="col-sm-5">
                   <input type="text" class="form-control col-6" id="priceMax" v-model="priceMax">
                 </div>

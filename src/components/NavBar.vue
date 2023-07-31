@@ -23,6 +23,7 @@
             <div class="navbar-nav">
               <router-link to="/" class="nav-link" aria-current="page">HOME</router-link>
               <router-link to="/products" class="nav-link">PRODUCTS</router-link>
+              <router-link to="/" class="nav-link">NEWS</router-link>
             </div>
             <div class="navbar-nav ms-auto">
               <router-link to="/login" class="nav-link" v-if="!this.$store.getters.getUser">
