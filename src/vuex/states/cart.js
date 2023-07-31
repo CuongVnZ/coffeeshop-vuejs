@@ -1,14 +1,14 @@
 const state = {
-    data: [
-        {
-            "desc": "The distinctive sweet and refreshing taste of longan delicately blends with the finest oolong tea and chia seeds to bring you a drink that is not only delicious but also nutritious.",
-            "pid": "dragon-eyes-chia-seeds-tea",
-            "img": "/images/products/dragon-eyes-chia-seeds-tea.png",
-            "price": "2.05",
-            "title": "Dragon Eyes (Longan) Chia Seeds Tea",
-            "quantity": 5
-        }
-    ]
+  data: [
+    {
+      "desc": "The distinctive sweet and refreshing taste of longan delicately blends with the finest oolong tea and chia seeds to bring you a drink that is not only delicious but also nutritious.",
+      "pid": "dragon-eyes-chia-seeds-tea",
+      "img": "/images/products/dragon-eyes-chia-seeds-tea.png",
+      "price": "2.05",
+      "title": "Dragon Eyes (Longan) Chia Seeds Tea",
+      "quantity": 5
+    }
+  ]
 }
 
 const mutations = {

@@ -12,10 +12,10 @@ defineProps({
 		<div class="product-circle"/>
 		<img class="product-image" :src="product.img" :alt="product.title"/>
 		<div class="product-info">
-			<div class="product-icon" @click="addToCart(product.id)">
+			<div class="product-icon" v-add-to-cart="{ $store, item: {...product, quantity: 1} }">
 				<i class="bi bi-cart-plus-fill"></i>
 			</div>
-			<router-link :to="'/product/'+product.pid" class="text-dark text-decoration-none">
+			<router-link :to="'/product/' + product.pid" class="text-dark text-decoration-none">
 				<div class="product-icon">
 					<i class="bi bi-search"></i>
 				</div>
@@ -29,12 +29,7 @@ defineProps({
 
 <script>
 export default {
-	methods: {
-		addToCart(id) {
-			this.$store.dispatch('addToCart', {...this.product, quantity: 1});
-			this.$store.dispatch('addNotification', "You added an item to your cart.");
-		}
-	}
+
 }
 </script>
 
