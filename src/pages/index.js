@@ -8,4 +8,14 @@ import Profile from './Profile.vue'
 import Checkout from './Checkout.vue'
 import Receipt from './Receipt.vue'
 
-export { Home, Products, Product, Cart, Login, Register, Profile, Checkout, Receipt}
+export { 
+    Home, 
+    Products, 
+    Product, 
+    Cart, 
+    Login, 
+    Register, 
+    Profile, 
+    Checkout, 
+    Receipt
+}
