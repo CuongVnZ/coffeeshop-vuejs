@@ -3,9 +3,7 @@ import Slider from '../components/Slider.vue';
 import Categories from '../components/Categories.vue';
 import Newsletter from '../components/Newsletter.vue';
 import Products from '../components/Products.vue';
-defineProps({
-
-})
+import BarChart from '../components/BarChart.vue';
 </script>
 
 <template>
@@ -23,6 +21,7 @@ defineProps({
 				<div class="col-md-12 mb-2">
 						<h1 class="fw-bold">TRENDING PRODUCTS</h1>
 				</div>
+				<BarChart />
 				<Products :limit=5 />
 			</div>
 		</section>
