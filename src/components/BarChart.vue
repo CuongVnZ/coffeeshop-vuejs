@@ -17,12 +17,12 @@
     data() {
       return {
         chartData: {
-          labels: [ 'Product 1', 'Product 1', 'Product 1', 'Product 1', 'Product 1', 'Product 1', 'Product 1', 'Product 1', 'Product 1', 'Product 1', 'Product 1', 'Product 1', 'Product 1', 'Product 1', 'Product 1', 'Product 1' ],
+          labels: [ 'Product 1', 'Product 1', 'Product 1', 'Product 1', 'Product 1', 'Product 1', 'Product 1', 'Product 1', 'Product 1', 'Product 1', 'Product 1' ],
           datasets: [ 
             { 
               label: 'Sales',
               backgroundColor: '#F1D3B3',
-              data: [50, 42, 22, 35, 45, 27, 31, 25, 50, 42, 22, 35, 45, 27, 31, 25] 
+              data: [50, 42, 22, 35, 45, 27, 31, 25, 50, 42] 
             } 
           ]
         },
