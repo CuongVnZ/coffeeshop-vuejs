@@ -1,8 +1,14 @@
+import { publicRequest } from '@/requestMethod.js'
+
 const state = {
+  isLoading: true,
   data: []
 }
 
 const mutations = {
+  SET_LOADING(state, isLoading) {
+    state.isLoading = isLoading;
+  },
   SET_PRODUCTS(state, products) {
     state.data = products
   }
@@ -11,6 +17,17 @@ const mutations = {
 const actions = {
   setProducts({ commit }, products) {
     commit('SET_PRODUCTS', products)
+  },
+  async loadProducts({ commit }) {
+    commit('SET_LOADING', true)
+		await publicRequest.get('/products/')
+		.then(res => {
+			commit('SET_PRODUCTS', res.data)
+		})
+    .catch(error => {
+      console.log(error)
+    })
+    commit('SET_LOADING', false)
   }
 }
 

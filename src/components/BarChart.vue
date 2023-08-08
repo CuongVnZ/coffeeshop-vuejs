@@ -1,3 +1,13 @@
+<script setup>
+defineProps({
+	products: {
+		type: Array,
+		default: []
+	}
+})
+</script>
+
+
 <template>
   <Bar
     v-if="loaded"
@@ -46,19 +56,18 @@ export default {
       }
     }
   },
-  watch: {
-    '$store.state.products.data' () {
-      this.updateData();
-    }
+  mounted() {
+    console.log(this.products)
+    this.updateData()
   },
   methods: {
     updateData() {
       // random 10 product 
-      let productSize = this.$store.getters.getProductSize
+      let productSize = this.products.length
       let randomProduct = []
       for (let i = 0; i < 10; i++) {
         let random = Math.floor(Math.random() * productSize)
-        randomProduct.push(this.$store.getters.getProducts[random].title)
+        randomProduct.push(this.products[random].title)
       }
       // random sales
       let randomSales = []
@@ -70,7 +79,7 @@ export default {
       this.chartData.labels = randomProduct
       this.chartData.datasets[0].data = randomSales
 
-      this.loaded = true
+      this.loaded = true;
     }
   },
 }

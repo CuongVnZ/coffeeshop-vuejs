@@ -14,7 +14,11 @@ defineProps({
 		type: String,
 		default: ''
 	},
-	price: {
+	priceMin: {
+		type: Number,
+		default: -1
+	},
+	priceMax: {
 		type: Number,
 		default: -1
 	}
@@ -22,17 +26,30 @@ defineProps({
 </script>
 
 <template>
-	<Product v-for="product in products" :key="product.id" :product="product" />
+	<div v-if="products.isLoading">
+		<div class="col-md-12 text-center">
+			<div class="spinner-border text-dark" role="status">
+				<span class="visually-hidden">Loading...</span>
+			</div>
+		</div>
+	</div>
+	<Product v-if="!products.isLoading" v-for="product in filtered" :key="product.id" :product="product" />
 	<p v-if="products.length === 0">No products found.</p>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
 	data() {
 		return {
-			data: [],
-			products: []
+			filtered: [],
 		}
+	},
+	computed: {
+		...mapState({
+			products: state => state.products
+		})
 	},
 	created() {
 		this.filterProducts();
@@ -51,19 +68,21 @@ export default {
 			this.filterProducts();
 		},
 		// watch this.$store.state.products
-		'$store.state.products.data': function() {
+		'products.isLoading': function() {
 			this.filterProducts();
 		}
 	},
   methods: {
     filterProducts() {
-			this.data = this.$store.getters.getProducts;
-			this.products = this.data.filter((product) => {
+			console.log("Filter products")
+			this.filtered = this.products.data.filter((product) => {
 				return this.filterCondition(product);
 			});
 			if (this.limit !== -1) {
-				this.products = this.products.slice(0, this.limit);
+				this.filtered = this.filtered.slice(0, this.limit);
 			}
+
+			return this.filtered;
     },
     filterCondition(product) {
 			if (this.name !== '' && !product.title.toLowerCase().includes(this.name.toLowerCase())) {

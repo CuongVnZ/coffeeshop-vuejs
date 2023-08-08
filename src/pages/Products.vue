@@ -48,6 +48,8 @@ import Products from '../components/Products.vue';
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
 	data () {
 		return {

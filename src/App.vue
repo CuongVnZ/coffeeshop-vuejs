@@ -14,11 +14,7 @@ import Notifications from './components/Notifications.vue';
 <script>
 export default {
 	beforeCreate() {
-		fetch('https://eshop-mongo-api.vercel.app/api/products/')
-		.then(response => response.json())
-		.then(data => {
-			this.$store.dispatch('setProducts', data);
-		}),
+		this.$store.dispatch('loadProducts');
     
     // reset notifications
     this.$store.dispatch('resetNotifications');

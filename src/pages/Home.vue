@@ -21,7 +21,7 @@ import BarChart from '../components/BarChart.vue';
 				<div class="col-md-12 mb-2">
 						<h1 class="fw-bold">TRENDING PRODUCTS</h1>
 				</div>
-				<BarChart />
+				<BarChart v-if="!products.isLoading" :products="products.data"/>
 				<Products :limit=5 />
 			</div>
 		</section>
@@ -50,6 +50,18 @@ import BarChart from '../components/BarChart.vue';
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
+export default {
+	computed: {
+		...mapState({
+			products: state => state.products
+		})
+	},
+	mounted() {
+		console.log(this.products)
+	}
+}
 </script>
 
 <style scoped>
