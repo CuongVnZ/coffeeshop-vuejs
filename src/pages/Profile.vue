@@ -117,7 +117,6 @@ export default {
       emailInput: '',
       phoneInput: '',
       shippingAddressInput: '',
-
       orders: []
     }
   },
@@ -144,7 +143,7 @@ export default {
     })
     .catch(err => {
       console.log(err);
-      this.$store.dispatch('addNotification', "Loading orders error: "+err.response.data.message);
+      this.$store.dispatch('addNotification', "Loading orders error: " + err.message);
     })
   },
   methods: {
