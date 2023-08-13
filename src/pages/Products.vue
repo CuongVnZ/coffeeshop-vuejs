@@ -23,11 +23,11 @@
               <div class="row form-group mb-3">
                 <label for="price">Price (min - max):</label>
                 <div class="col-sm-5">
-                  <input type="text" class="form-control" id="priceMin" v-model="filter.priceMin">
+                  <input type="number" class="form-control" id="priceMin" v-model="filter.priceMin">
                 </div>
                 <label class="col-sm-2 text-center">-</label>
                 <div class="col-sm-5">
-                  <input type="text" class="form-control col-6" id="priceMax" v-model="filter.priceMax">
+                  <input type="number" class="form-control col-6" id="priceMax" v-model="filter.priceMax">
                 </div>
               </div>
             </div>

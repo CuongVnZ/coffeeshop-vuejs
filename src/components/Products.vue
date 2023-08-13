@@ -8,7 +8,7 @@ defineProps({
 			limit: -1,
 			name: '',
 			type: '',
-			priceMin: -1,
+			priceMin: 0,
 			priceMax: 99
 		}
 	}
@@ -71,7 +71,7 @@ export default {
 			if (this.filter.type && product.category !== this.filter.type) {
 				return false;
 			}
-			if (this.filter.priceMin && product.price > this.filter.priceMin) {
+			if (this.filter.priceMin && product.price < this.filter.priceMin) {
 				return false;
 			}
 			return true;
