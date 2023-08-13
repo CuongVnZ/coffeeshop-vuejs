@@ -74,6 +74,9 @@ export default {
 			if (this.filter.priceMin && product.price < this.filter.priceMin) {
 				return false;
 			}
+			if (this.filter.priceMax && product.price > this.filter.priceMax) {
+				return false;
+			}
 			return true;
     }
   }
