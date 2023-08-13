@@ -1,11 +1,3 @@
-<script setup>
-import Slider from '../components/Slider.vue';
-import Categories from '../components/Categories.vue';
-import Newsletter from '../components/Newsletter.vue';
-import Products from '../components/Products.vue';
-import BarChart from '../components/BarChart.vue';
-</script>
-
 <template>
 	<!-- Slider -->
 	<Slider />
@@ -22,7 +14,7 @@ import BarChart from '../components/BarChart.vue';
 						<h1 class="fw-bold">TRENDING PRODUCTS</h1>
 				</div>
 				<BarChart v-if="!products.isLoading" :products="products.data"/>
-				<Products :limit=5 />
+				<Products :filter="{limit:5}" />
 			</div>
 		</section>
 
@@ -50,9 +42,21 @@ import BarChart from '../components/BarChart.vue';
 </template>
 
 <script>
+import Slider from '../components/Slider.vue';
+import Categories from '../components/Categories.vue';
+import Newsletter from '../components/Newsletter.vue';
+import Products from '../components/Products.vue';
+import BarChart from '../components/BarChart.vue';
 import { mapState } from 'vuex';
 
 export default {
+	components: {
+		Slider,
+		Categories,
+		Newsletter,
+		Products,
+		BarChart
+	},
 	computed: {
 		...mapState({
 			products: state => state.products

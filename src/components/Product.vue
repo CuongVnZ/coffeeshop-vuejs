@@ -1,12 +1,3 @@
-<script setup>
-defineProps({
-	product: {
-		type: Object,
-		default: {}
-	}
-})
-</script>
-
 <template>
 	<div class="product-container">
 		<div class="product-circle"/>
@@ -29,7 +20,12 @@ defineProps({
 
 <script>
 export default {
-
+	props: {
+		product: {
+			type: Object,
+			default: {}
+		}
+	}
 }
 </script>
 

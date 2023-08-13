@@ -1,12 +1,3 @@
-<script setup>
-defineProps({
-	item: {
-		type: Object,
-		default: {}
-	}
-})
-</script>
-
 <template>
 	<!-- Modal -->
 	<div class="modal fade" :id="modalId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -57,6 +48,12 @@ defineProps({
 
 <script>
 export default {
+	props: {
+		item: {
+			type: Object,
+			default: {}
+		}
+	},
   data () {
     return {
 		modalId: 'areYouSure' + '-' + this.item.pid

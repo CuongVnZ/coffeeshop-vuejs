@@ -42,13 +42,8 @@ export default {
         responsive: true,
         scales: {
           y: {
-            // title: {
-            //   display: true,
-            //   text: 'Value'
-            // },
             max: 100,
             ticks: {
-              // forces step size to be 50 units
               stepSize: 20
             }
           }

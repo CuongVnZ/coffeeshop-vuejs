@@ -1,7 +1,3 @@
-<script setup>
-import { publicRequest, userRequest } from '../requestMethod';
-</script>
-
 <template>
   <div class="container my-5">
     <div class="row g-5">
@@ -121,6 +117,8 @@ import { publicRequest, userRequest } from '../requestMethod';
 </template>
 
 <script>
+import { publicRequest, userRequest } from '../requestMethod';
+
 export default {
   data () {
     return {

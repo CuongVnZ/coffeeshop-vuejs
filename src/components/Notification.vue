@@ -1,18 +1,3 @@
-<script setup>
-import { Toast } from 'bootstrap';
-
-defineProps({
-	toastId: {
-		type: Number,
-		default: -1
-	},
-	desc: {
-		type: String,
-		default: 'Hello, world! This is a toast message.'
-	}
-})
-</script>
-
 <template>
   <div :id="String(toastId)" class="toast fade" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="3000">
     <div class="toast-header">
@@ -28,8 +13,21 @@ defineProps({
 </template>
 
 <script>
+import { Toast } from 'bootstrap';
+
 export default {
+  props: {
+    toastId: {
+      type: Number,
+      default: -1
+    },
+    desc: {
+      type: String,
+      default: 'Hello, world! This is a toast message.'
+    }
+  },
   mounted () {
+    // Automatically show toast
     var toast = Toast.getOrCreateInstance(document.getElementById(this.toastId))
     toast.show()
   }

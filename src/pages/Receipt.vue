@@ -1,11 +1,13 @@
 <script setup>
 import { userRequest } from '../requestMethod';
+import Spinner from '../components/Spinner.vue';
 </script>
 
 <template>
 <div class="container my-5">
   <div class="row min-vh-100 d-flex justify-content-center">
-    <div class="col-lg-10 col-xl-8">
+    <Spinner v-if="isLoading"/>
+    <div class="col-lg-10 col-xl-8" v-if="!isLoading">
         <div class="card" style="border-radius: 10px;">
           <div class="card-header px-4 py-3">
             <h5 class="text-muted mb-0">Thanks for your Order, <span>{{ user.name }}</span>!</h5>
@@ -87,6 +89,7 @@ import { userRequest } from '../requestMethod';
 export default {
 	data() {
 		return {
+      isLoading: true,
       user: this.$store.getters.getUser,
       order: {},
       products: []
@@ -107,7 +110,7 @@ export default {
         product.quantity = item.quantity;
         this.products.push(product)
       });
-
+      this.isLoading = false;
       console.log(this.products)
     })
     .catch((error) => {

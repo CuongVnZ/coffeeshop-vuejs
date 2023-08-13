@@ -1,6 +1,3 @@
-<script setup>
-</script>
-
 <template>
 	<div id="carouselExample" class="carousel slide">
 		<div class="carousel-inner">
@@ -24,6 +21,9 @@
 		</button>
 	</div>
 </template>
+
+<script>
+</script>
 
 <style scoped>
 </style>

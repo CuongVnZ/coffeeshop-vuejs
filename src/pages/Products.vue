@@ -1,7 +1,3 @@
-<script setup>
-import Products from '../components/Products.vue';
-</script>
-
 <template>
   <div class="container my-5 min-vh-100">
     <h1 class="text-center mb-5">PRODUCTS</h1>
@@ -13,7 +9,7 @@ import Products from '../components/Products.vue';
               <h3 class="card-title mb-3">SEARCH BY</h3>
               <div class="form-group">
                 <label for="type">Category:</label>
-                <select class="form-control mb-3" id="type" v-model="type">
+                <select class="form-control mb-3" id="type" v-model="filter.type">
                   <option value="">All</option>
                   <option value="coffee">Coffee</option>
                   <option value="tea">Tea</option>
@@ -22,16 +18,16 @@ import Products from '../components/Products.vue';
               </div>
               <div class="form-group mb-3">
                 <label for="name">Product Name:</label>
-                <input type="text" class="form-control" id="name" v-model="name">
+                <input type="text" class="form-control" id="name" v-model="filter.name">
               </div>
               <div class="row form-group mb-3">
                 <label for="price">Price (min - max):</label>
                 <div class="col-sm-5">
-                  <input type="text" class="form-control" id="priceMin" v-model="priceMin">
+                  <input type="text" class="form-control" id="priceMin" v-model="filter.priceMin">
                 </div>
                 <label class="col-sm-2 text-center">-</label>
                 <div class="col-sm-5">
-                  <input type="text" class="form-control col-6" id="priceMax" v-model="priceMax">
+                  <input type="text" class="form-control col-6" id="priceMax" v-model="filter.priceMax">
                 </div>
               </div>
             </div>
@@ -40,7 +36,7 @@ import Products from '../components/Products.vue';
       </div>
       <div class="col-md-8">
         <div class="row">
-					<Products :name="name" :type="type" />
+					<Products :filter="filter"/>
         </div>
       </div>
     </div>
@@ -48,15 +44,20 @@ import Products from '../components/Products.vue';
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import Products from '../components/Products.vue';
 
 export default {
+  components: {
+    Products
+  },
 	data () {
 		return {
-      type: '',
-			name: '',
-			priceMin: 0,
-      priceMax: 99
+      filter: {
+        name: '',
+        type: '',
+        priceMin: 0,
+        priceMax: 99
+      }
 		}
 	}
 }

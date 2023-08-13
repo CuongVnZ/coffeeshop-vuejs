@@ -1,6 +1,3 @@
-<script setup>
-</script>
-
 <template>
   <section class="newsletter p-5 text-center text-white">
     <div class="my-5">
@@ -19,6 +16,9 @@
     </div>
   </section>
 </template>
+
+<script>
+</script>
 
 <style scoped>
 .newsletter {

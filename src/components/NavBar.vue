@@ -1,6 +1,3 @@
-<script setup>
-</script>
-
 <template>
   <header>
     <div class="announcement text-white">

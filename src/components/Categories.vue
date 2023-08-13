@@ -1,6 +1,3 @@
-<script setup>
-</script>
-
 <template>
 	<!-- Main Products Highlight -->
 	<section class="products mt-5">
