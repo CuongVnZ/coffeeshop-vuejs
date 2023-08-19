@@ -29,17 +29,26 @@
                   Login
                 </button>
               </router-link>
-              <router-link to="/profile" class="nav-link" v-if="this.$store.getters.getUser">
+              <!-- <router-link to="/profile" class="nav-link" v-if="this.$store.getters.getUser">
                 <button class="btn btn-outline-dark">
                   <i class="bi bi-person-circle"></i>
                 </button>
-              </router-link>
-              <a class="nav-link" v-if="this.$store.getters.getUser">
+              </router-link> -->
+              <li class="nav-item dropdown" v-if="this.$store.getters.getUser">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <img src="https://i.pravatar.cc/300" width="40" height="40" class="rounded-circle">
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <router-link to="/profile" class="dropdown-item"><i class="bi bi-person-circle mx-1"></i>Dashboard</router-link>
+                  <button class=" dropdown-item text-danger" @click="logout"><i class="bi bi-door-closed-fill mx-1"></i>Logout</button>
+                </div>
+              </li>
+              <!-- <a class="nav-link" v-if="this.$store.getters.getUser">
                 <button class="btn btn-outline-danger" v-if="this.$store.getters.getUser" @click="logout">
                   <i class="bi bi-door-closed-fill"></i>
                   Logout
                 </button>
-              </a>
+              </a> -->
               <router-link to="/cart" class="nav-link">
                 <button class="btn btn-outline-dark">
                     <i class="bi bi-cart-fill me-1"></i>

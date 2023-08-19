@@ -4,14 +4,14 @@
       <div class="col-md-3">
         <div class="card mb-3">
           <div class="card-body text-center">
-            <img src="https://via.placeholder.com/150" class="rounded-circle mb-3" alt="Avatar">
+            <img src="https://i.pravatar.cc/150" class="rounded-circle mb-3" alt="Avatar">
             <h5 class="card-title">{{ user.name }} <i class="bi bi-patch-check-fill"></i></h5>
             <p class="card-text">{{ user.phone }}</p>
             <!-- more information -->
             <div class="d-flex justify-content-between">
               <div class="d-flex flex-column">
                 <span>Member since</span>
-                <span>July 2023</span>
+                <span>{{ new Date(user.createdAt).toLocaleDateString() }}</span>
               </div>
               <div class="d-flex flex-column">
                 <span>Order</span>
@@ -24,7 +24,7 @@
         <div class="card mb-3">
           <div class="card-body">
             <h5 class="card-title">Member ranking</h5>
-            <p class="card-text">Brozen</p>
+            <p class="card-text">Brozen ({{ user.points }}/1000)</p>
             <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
               <div class="progress-bar progress-bar-striped progress-bar-animated bg-dark" style="width: 75%">75%</div>
             </div>
@@ -81,9 +81,11 @@
                   <td><router-link :to="'/receipt/' + order._id">#{{orders.length-index}}</router-link></td>
                   <td>{{ new Date(order.createdAt).toLocaleString() }}</td>
                   <td>${{ order.total }}</td>
-                  <td><label class="bg-secondary text-white rounded px-3">{{ order.status }}</label></td>
+                  <td v-if="order.status == 'Pending'"><label class="bg-secondary text-white rounded px-3">{{ order.status }}</label></td>
+                  <td v-if="order.status == 'Delivering'"><label class="bg-warning rounded px-3">{{ order.status }}</label></td>
+                  <td v-if="order.status == 'Delivered'"><label class="bg-success text-white rounded px-3">{{ order.status }}</label></td>
                 </tr>
-                <tr>
+                <!-- <tr>
                   <td>#123</td>
                   <td>July 1, 2023</td>
                   <td>$100.00</td>
@@ -94,7 +96,7 @@
                   <td>May 20, 2023</td>
                   <td>$75.00</td>
                   <td><label class="bg-warning rounded px-3">Shipped</label></td>
-                </tr>
+                </tr> -->
               </tbody>
             </table>
           </div>
@@ -119,7 +121,7 @@ export default {
     }
   },
   mounted() {
-    if(this.$store.getters.getUser === null) {
+    if(!this.$store.getters.getUser) {
       this.$router.push('/login')
     } else {
       this.user = this.$store.getters.getUser;

@@ -10,12 +10,12 @@ import Spinner from '../components/Spinner.vue';
     <div class="col-lg-10 col-xl-8" v-if="!isLoading">
         <div class="card" style="border-radius: 10px;">
           <div class="card-header px-4 py-3">
-            <h5 class="text-muted mb-0">Thanks for your Order, <span>{{ user.name }}</span>!</h5>
+            <h5 class="text-muted mb-0 text-center">Thanks for your Order, <span>{{ user.name }}</span>!</h5>
           </div>
           <div class="card-body p-4">
             <div class="d-flex justify-content-between align-items-center mb-4">
               <p class="lead fw-normal mb-0">Receipt</p>
-              <p class="small text-muted mb-0">Receipt ID: {{ order._id }}</p>
+              <p class="small text-muted mb-0">ID: {{ order._id }}</p>
             </div>
             <div class="card shadow-0 border mb-4">
               <div class="card-body">
@@ -48,11 +48,12 @@ import Spinner from '../components/Spinner.vue';
                   <div class="col-md-10">
                     <div class="progress" style="height: 6px; border-radius: 16px;">
                       <div class="progress-bar bg-dark" role="progressbar"
-                        style="width: 65%; border-radius: 16px" aria-valuenow="65"
+                        style="width: 33%; border-radius: 16px" aria-valuenow="33"
                         aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <div class="d-flex justify-content-around mb-1">
-                      <p class="text-muted mt-1 mb-0 small ms-xl-5">Out for delivary</p>
+                      <p class="text-muted mt-1 mb-0 small ms-xl-5">Pending</p>
+                      <p class="text-muted mt-1 mb-0 small ms-xl-5">Delivering</p>
                       <p class="text-muted mt-1 mb-0 small ms-xl-5">Delivered</p>
                     </div>
                   </div>
@@ -66,13 +67,13 @@ import Spinner from '../components/Spinner.vue';
             </div>
 
             <div class="d-flex justify-content-between pt-2">
-              <p class="text-muted mb-0">Invoice Date : {{ new Date(order.createdAt) }}</p>
-              <p class="text-muted mb-0"><span class="fw-bold me-4">Discount</span> $0</p>
+              <p class="text-muted mb-0">Invoice Date : {{ new Date(order.createdAt).toLocaleString() }}</p>
+              <p class="text-muted mb-0"><span class="fw-bold me-4">Discount</span> $00.00</p>
             </div>
 
             <div class="d-flex justify-content-between mb-5">
-              <p class="text-muted mb-0">Ship to: {{ order.shippingAddress }}</p>
-              <p class="text-muted mb-0"><span class="fw-bold me-4">Shipping</span> $0</p>
+              <p class="text-muted mb-0">Shipping Address: {{ order.shippingAddress }}</p>
+              <p class="text-muted mb-0"><span class="fw-bold me-4">Shipping</span> $00.00</p>
             </div>
           </div>
           <div class="card-footer border-0 px-4 py-3 bg-dark">
@@ -97,6 +98,10 @@ export default {
 	},
 
   mounted() {
+    if(!this.$store.getters.getUser) {
+      this.$router.push('/login')
+      return;
+    }
     var id = this.$route.params.id
     var uid = this.$store.getters.getUser._id;
     var token = this.$store.getters.getToken;
