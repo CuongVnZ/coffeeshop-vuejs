@@ -7,7 +7,6 @@ defineProps({
 })
 </script>
 
-
 <template>
   <Bar
     v-if="loaded"

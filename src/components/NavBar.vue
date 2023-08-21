@@ -36,7 +36,7 @@
               </router-link> -->
               <li class="nav-item dropdown" v-if="this.$store.getters.getUser">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <img src="https://i.pravatar.cc/300" width="40" height="40" class="rounded-circle">
+                  <img src="https://placehold.co/100x100" width="40" height="40" class="rounded-circle">
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <router-link to="/profile" class="dropdown-item"><i class="bi bi-person-circle mx-1"></i>Dashboard</router-link>
