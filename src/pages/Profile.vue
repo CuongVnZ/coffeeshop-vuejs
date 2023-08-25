@@ -67,7 +67,8 @@
             </form>
           </div>
           <div class="tab-pane fade" id="order-history">
-            <table class="table">
+            <Spinner v-if="isHistoryLoading"/>
+            <table class="table" v-else>
               <thead>
                 <tr>
                   <th>Order Number</th>
@@ -107,9 +108,13 @@
 </template>
 
 <script>
+import Spinner from '../components/Spinner.vue';
 import { userRequest } from '../requestMethod.js';
 
 export default {
+  components: {
+    Spinner
+  },
   data() {
     return {
       user: {},
@@ -117,7 +122,8 @@ export default {
       emailInput: '',
       phoneInput: '',
       shippingAddressInput: '',
-      orders: []
+      orders: [],
+      isHistoryLoading: true,
     }
   },
   mounted() {
@@ -140,6 +146,8 @@ export default {
       this.orders.sort((a, b) => {
         return new Date(b.createdAt) - new Date(a.createdAt);
       })
+
+      this.isHistoryLoading = false;
     })
     .catch(err => {
       console.log(err);
