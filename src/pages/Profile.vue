@@ -1,11 +1,11 @@
 <template>
   <div class="container mt-5 min-vh-100">
-    <div class="row mb-5">
+    <div class="row mb-5" v-if="user">
       <div class="col-md-3">
         <div class="card mb-3">
           <div class="card-body text-center">
             <img src="https://i.pravatar.cc/150" class="rounded-circle mb-3" alt="Avatar">
-            <h5 class="card-title">{{ user.name }} <i class="bi bi-patch-check-fill"></i></h5>
+            <h5 class="card-title">{{ user.fullname }} <i class="bi bi-patch-check-fill"></i></h5>
             <p class="card-text">{{ user.phone }}</p>
             <!-- more information -->
             <div class="d-flex justify-content-between">
@@ -48,15 +48,15 @@
                 <input type="text" class="form-control" id="name" :value="user.username" disabled>
               </div>
               <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" v-model="nameInput">
+                <label for="fullname" class="form-label">Name</label>
+                <input type="text" class="form-control" id="fullname" v-model="nameInput">
               </div>
               <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
+                <label for="email" class="form-label">Email Address</label>
                 <input type="email" class="form-control" id="email" v-model="emailInput">
               </div>
               <div class="mb-3">
-                <label for="phone" class="form-label">Phone</label>
+                <label for="phone" class="form-label">Phone Number</label>
                 <input type="tel" class="form-control" id="phone" v-model="phoneInput">
               </div>
               <div class="mb-3">
@@ -67,39 +67,7 @@
             </form>
           </div>
           <div class="tab-pane fade" id="order-history">
-            <Spinner v-if="isHistoryLoading"/>
-            <table class="table" v-else>
-              <thead>
-                <tr>
-                  <th>Order Number</th>
-                  <th>Date</th>
-                  <th>Total</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="(order, index) in orders">
-                  <td><router-link :to="'/receipt/' + order._id">#{{orders.length-index}}</router-link></td>
-                  <td>{{ new Date(order.createdAt).toLocaleString() }}</td>
-                  <td>${{ order.total }}</td>
-                  <td v-if="order.status == 'Pending'"><label class="bg-secondary text-white rounded px-3">{{ order.status }}</label></td>
-                  <td v-if="order.status == 'Delivering'"><label class="bg-warning rounded px-3">{{ order.status }}</label></td>
-                  <td v-if="order.status == 'Delivered'"><label class="bg-success text-white rounded px-3">{{ order.status }}</label></td>
-                </tr>
-                <!-- <tr>
-                  <td>#123</td>
-                  <td>July 1, 2023</td>
-                  <td>$100.00</td>
-                  <td><label class="bg-success text-white rounded px-3">Delivered</label></td>
-                </tr>
-                <tr>
-                  <td>#789</td>
-                  <td>May 20, 2023</td>
-                  <td>$75.00</td>
-                  <td><label class="bg-warning rounded px-3">Shipped</label></td>
-                </tr> -->
-              </tbody>
-            </table>
+            <History :userId="user._id"/>
           </div>
         </div>
       </div>
@@ -108,57 +76,37 @@
 </template>
 
 <script>
-import Spinner from '../components/Spinner.vue';
+import History from '../components/History.vue';
 import { userRequest } from '../requestMethod.js';
 
 export default {
   components: {
-    Spinner
+    History
   },
   data() {
     return {
-      user: {},
+      user: this.$store.getters.getUser,
       nameInput: '',
       emailInput: '',
       phoneInput: '',
       shippingAddressInput: '',
-      orders: [],
-      isHistoryLoading: true,
     }
   },
   mounted() {
-    if(!this.$store.getters.getUser) {
+    if(this.user == null || this.user == undefined || this.user._id == undefined) {
       this.$router.push('/login')
     } else {
-      this.user = this.$store.getters.getUser;
-      this.nameInput = this.user.name;
+      this.nameInput = this.user.fullname;
       this.emailInput = this.user.email;
       this.phoneInput = this.user.phone;
       this.shippingAddressInput = this.user.shippingAddress;
     }
-
-    var token = this.$store.getters.getToken;
-    userRequest(token).get('/orders/find/' + this.user._id)
-    .then(res => {
-      this.orders = res.data;
-
-      // sort orders by date
-      this.orders.sort((a, b) => {
-        return new Date(b.createdAt) - new Date(a.createdAt);
-      })
-
-      this.isHistoryLoading = false;
-    })
-    .catch(err => {
-      console.log(err);
-      this.$store.dispatch('addNotification', "Loading orders error: " + err.message);
-    })
   },
   methods: {
     saveChanges() {
       var token = this.$store.getters.getToken;
       userRequest(token).put('/users/'+this.user._id, {
-        name: this.nameInput,
+        fullname: this.nameInput,
         email: this.emailInput,
         phone: this.phoneInput,
         shippingAddress: this.shippingAddressInput

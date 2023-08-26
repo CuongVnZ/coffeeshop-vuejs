@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container min-vh-100">
     <div class="row my-5">
       <div class="col-md-6 offset-md-3 mb-3">
         <div v-if="errors.length" class="alert alert-danger" role="alert">
