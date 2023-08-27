@@ -10,7 +10,7 @@ import Spinner from '../components/Spinner.vue';
     <div class="col-lg-10 col-xl-8" v-if="!isLoading">
         <div class="card" style="border-radius: 10px;">
           <div class="card-header px-4 py-3">
-            <h5 class="text-muted mb-0 text-center">Thanks for your Order, <span>{{ user.name }}</span>!</h5>
+            <h5 class="text-muted mb-0 text-center">Thanks for your Order, <span>{{ user.fullname }}</span>!</h5>
           </div>
           <div class="card-body p-4">
             <div class="d-flex justify-content-between align-items-center mb-4">
