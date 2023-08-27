@@ -180,7 +180,7 @@ export default {
       publicRequest.post('/auth/register', {
         username: this.usernameInput,
         password: this.passwordInput,
-        name: this.nameInput,
+        fullname: this.nameInput,
         email: this.emailInput,
         phone: this.mobileNumberInput,
         shippingAddress: shippingAddress
