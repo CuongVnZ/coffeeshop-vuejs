@@ -12,13 +12,31 @@ import Notifications from './components/Notifications.vue';
 </template>
 
 <script>
+import { userRequest } from './requestMethod.js';
+
 export default {
 	beforeCreate() {
 		this.$store.dispatch('loadProducts');
     
     // reset notifications
     this.$store.dispatch('resetNotifications');
-	}
+	},
+  mounted() {
+    // check valid token
+    var token = this.$store.getters.getToken;
+    console.log(token)
+    userRequest(token).get('/auth/test')
+    .then(res => {
+      console.log(res.data);
+    })
+    .catch(err => {
+      console.log(err);
+      this.$store.dispatch('addNotification', "Invalid Token");
+      this.$store.dispatch('logout');
+      // push /login
+      this.$router.push('/login');
+    })
+  }
 }
 </script>
 

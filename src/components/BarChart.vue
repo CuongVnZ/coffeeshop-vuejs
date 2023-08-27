@@ -1,12 +1,3 @@
-<script setup>
-defineProps({
-	products: {
-		type: Array,
-		default: []
-	}
-})
-</script>
-
 <template>
   <Bar
     v-if="loaded"
@@ -23,6 +14,12 @@ import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, Li
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
 export default {
+	props: {
+    products: {
+      type: Array,
+      default: []
+    }
+	},
   components: { Bar },
   data() {
     return {

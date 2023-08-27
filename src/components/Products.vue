@@ -1,20 +1,3 @@
-<script setup>
-import Product from '../components/Product.vue';
-
-defineProps({
-	filter: {
-		type: Object,
-		default: {
-			limit: -1,
-			name: '',
-			type: '',
-			priceMin: 0,
-			priceMax: 99
-		}
-	}
-})
-</script>
-
 <template>
 	<Spinner v-if="products.isLoading"/>
 	<Product v-if="!products.length" v-for="product in filtered" :key="product.id" :product="product" />
@@ -23,13 +6,30 @@ defineProps({
 
 <script>
 import Spinner from '../components/Spinner.vue';
+import Product from '../components/Product.vue';
 import { mapState } from 'vuex';
 
 export default {
+	props: {
+		filter: {
+			type: Object,
+			default: {
+				limit: -1,
+				name: '',
+				type: '',
+				priceMin: 0,
+				priceMax: 99
+			}
+		}
+	},
 	data() {
 		return {
 			filtered: [],
 		}
+	},
+	components: {
+		Spinner,
+		Product
 	},
 	computed: {
 		...mapState({
