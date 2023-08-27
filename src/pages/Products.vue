@@ -11,9 +11,7 @@
                 <label for="type">Category:</label>
                 <select class="form-control mb-3" id="type" v-model="filter.type">
                   <option value="">All</option>
-                  <option value="coffee">Coffee</option>
-                  <option value="tea">Tea</option>
-                  <option value="milk-tea">Milk Tea</option>
+                  <option v-for="category in categories" :key="category" :value="category">{{ category }}</option>
                 </select>
               </div>
               <div class="form-group mb-3">
@@ -45,6 +43,7 @@
 
 <script>
 import Products from '../components/Products.vue';
+import { publicRequest } from '../requestMethod.js';
 
 export default {
   components: {
@@ -56,10 +55,20 @@ export default {
         name: '',
         type: '',
         priceMin: 0,
-        priceMax: 99
-      }
+        priceMax: 999
+      },
+      categories: []
 		}
-	}
+	},
+  created() {
+    publicRequest.get('/products/categories')
+    .then(res => {
+      this.categories = res.data;
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  },
 }
 </script>
 
