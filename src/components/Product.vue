@@ -80,13 +80,14 @@ export default {
 	transition: all 0.5s ease;
 	cursor: pointer;
 	border-radius: 10px;
+	padding: 10px;
 }
 
 .product-title {
 	color: rgb(0, 0, 0);
 	background-color: rgba(255, 255, 255, 0.8);
 	text-align: center;
-	border-radius: 10px;
+	border-radius: 5px;
 	margin-bottom: 5px;
 	padding: 3px;
 }

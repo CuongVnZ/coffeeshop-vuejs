@@ -36,7 +36,7 @@
   </table>
       <paginate
         v-if="!isHistoryLoading"
-        :page-count="orders.length/itemPerPage"
+        :page-count="orders.length/itemsPerPage"
         :page-range="3"
         :margin-pages="2"
         :click-handler="clickCallback"
@@ -66,7 +66,7 @@ export default {
   data() {
     return {
       currentPage: 1,
-      itemPerPage: 10,
+      itemsPerPage: 10,
       orders: [],
       isHistoryLoading: true,
     }
@@ -100,8 +100,8 @@ export default {
   },
   computed: {
     getItems: function() {
-      let current = this.currentPage * this.itemPerPage;
-      let start = current - this.itemPerPage;
+      let current = this.currentPage * this.itemsPerPage;
+      let start = current - this.itemsPerPage;
       return this.orders.slice(start, current);
     }
   },

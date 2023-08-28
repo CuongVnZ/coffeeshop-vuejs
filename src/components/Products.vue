@@ -1,12 +1,25 @@
 <template>
 	<Spinner v-if="products.isLoading"/>
-	<Product v-if="!products.length" v-for="product in filtered" :key="product.id" :product="product" />
 	<p v-if="products.length === 0">No products found.</p>
+	<Product v-else v-for="product in getItems" :key="product.id" :product="product" />
+
+	<paginate
+        v-if="filter.paginated"
+        :page-count="filtered.length/filter.itemsPerPage"
+        :page-range="3"
+        :margin-pages="2"
+        :click-handler="clickCallback"
+        :prev-text="'Prev'"
+        :next-text="'Next'"
+        :container-class="'pagination'"
+        :page-class="'page-item'"
+      />
 </template>
 
 <script>
 import Spinner from '../components/Spinner.vue';
 import Product from '../components/Product.vue';
+import Paginate from 'vuejs-paginate-next';
 import { mapState } from 'vuex';
 
 export default {
@@ -18,23 +31,33 @@ export default {
 				name: '',
 				type: '',
 				priceMin: 0,
-				priceMax: 99
+				priceMax: 99,
+				paginated: false,
+				itemsPerPage: 12,
 			}
-		}
+		},
 	},
 	data() {
 		return {
 			filtered: [],
+			
+			currentPage: 1
 		}
 	},
 	components: {
 		Spinner,
-		Product
+		Product,
+		Paginate
 	},
 	computed: {
 		...mapState({
 			products: state => state.products
-		})
+		}),
+		getItems: function() {
+      let current = this.currentPage * this.filter.itemsPerPage;
+      let start = current - this.filter.itemsPerPage;
+      return this.filtered.slice(start, current);
+    }
 	},
 	created() {
 		this.filterProducts();
@@ -78,10 +101,21 @@ export default {
 				return false;
 			}
 			return true;
+    },
+    clickCallback(pageNum) {
+      this.currentPage = Number(pageNum);
     }
   }
 }
 </script>
 
 <style scoped>
+.pagination {
+	margin: 10px;
+	justify-content: center;
+  cursor: pointer;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 </style>

@@ -4,6 +4,11 @@
 		<section class="py-5">
 			<div class="px-4 px-lg-5 my-5">
 				<Spinner v-if="products.isLoading && !this.products.data.length" />
+
+				<!-- "CATEGORY / TITLE" p-->
+				<p class="text-muted mb-3" v-if="!products.isLoading && this.products.data.length">
+					{{ product.category }} | {{ product.title }}
+				</p>
 				<div class="row gx-4 gx-lg-5 align-items-center" v-if="product">
 					<div class="col-md-5"><img class="card-img-top mb-5 mb-md-0" :src="product.img" :alt="product.title" /></div>
 					<div class="col-md-7">

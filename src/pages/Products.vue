@@ -57,7 +57,9 @@ export default {
         name: '',
         type: '',
         priceMin: 0,
-        priceMax: 1000000
+        priceMax: 1000000,
+        paginated: true,
+        itemsPerPage: 12,
       },
       categories: []
 		}
