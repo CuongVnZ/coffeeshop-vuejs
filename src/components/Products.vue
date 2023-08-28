@@ -1,6 +1,6 @@
 <template>
 	<Spinner v-if="products.isLoading"/>
-	<p v-if="products.length === 0">No products found.</p>
+	<p v-if="getItems.length === 0">No products found.</p>
 	<Product v-else v-for="product in getItems" :key="product.id" :product="product" />
 
 	<paginate
