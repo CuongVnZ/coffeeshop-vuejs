@@ -24,7 +24,7 @@
 						<div class="col-md-12 mb-3" v-if="product.options.length">
 							<label class="mb-1">Choose your options:</label>
 							<div class="col-md">
-								<button type="button" class="btn btn-outline-dark me-1 mb-1" v-for="item in product.options" :key="item" :class="{'active': currentOptions.include(item)}" @click="toggleOptions(item)">{{ item }}</button>
+								<button type="button" class="btn btn-outline-dark me-1 mb-1" v-for="item in product.options" :key="item" :class="{'active': currentOptions.includes(item)}" @click="toggleOptions(item)">{{ item }}</button>
 							</div>
 						</div>
 						<!-- Quantity -->
