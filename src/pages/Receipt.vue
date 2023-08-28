@@ -125,10 +125,10 @@ export default {
             price: 0,
             quantity: 0
           }
-        } else {
-          product.quantity = item.quantity;
-          this.products.push(product)
         }
+        
+        product.quantity = item.quantity;
+        this.products.push(product)
       });
       this.isLoading = false;
       console.log(this.products)
