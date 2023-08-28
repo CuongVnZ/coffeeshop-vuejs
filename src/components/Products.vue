@@ -1,6 +1,6 @@
 <template>
 	<Spinner v-if="products.isLoading"/>
-	<p v-if="filtered.length === 0">No products found.</p>
+	<p v-if="getItems.length === 0">No products found.</p>
 	<Product v-else v-for="product in getItems" :key="product.id" :product="product" />
 
 	<paginate
@@ -40,7 +40,6 @@ export default {
 	data() {
 		return {
 			filtered: [],
-			
 			currentPage: 1
 		}
 	},
@@ -54,9 +53,13 @@ export default {
 			products: state => state.products
 		}),
 		getItems: function() {
-      let current = this.currentPage * this.filter.itemsPerPage;
-      let start = current - this.filter.itemsPerPage;
-      return this.filtered.slice(start, current);
+			if(this.filter.paginated) {
+				let current = this.currentPage * this.filter.itemsPerPage;
+				let start = current - this.filter.itemsPerPage;
+				return this.filtered.slice(start, current);
+			} else {
+				return this.filtered;
+			}
     }
 	},
 	created() {
