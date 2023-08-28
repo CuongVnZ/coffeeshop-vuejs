@@ -94,7 +94,7 @@ export default {
 	},
 	methods: {
 		toggleOptions (item) {
-			if (this.currentOptions.include(item)) {
+			if (this.currentOptions.includes(item)) {
 				this.currentOptions = this.currentOptions.filter((option) => {
 					return option !== item;
 				});
