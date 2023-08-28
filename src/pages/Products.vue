@@ -16,17 +16,19 @@
               </div>
               <div class="form-group mb-3">
                 <label for="name">Product Name:</label>
-                <input type="text" class="form-control" id="name" v-model="filter.name">
+                <input type="text" class="form-control" id="name" placeholder="Enter product name..." v-model="filter.name">
               </div>
               <div class="row form-group mb-3">
-                <label for="price">Price (min - max):</label>
-                <div class="col-sm-5">
+                <label for="price">Price range:</label>
+                <!-- <div class="col-sm-5">
                   <input type="number" class="form-control" id="priceMin" v-model="filter.priceMin">
                 </div>
-                <label class="col-sm-2 text-center">-</label>
+                <label class="col-sm-2 text-center">to</label>
                 <div class="col-sm-5">
                   <input type="number" class="form-control col-6" id="priceMax" v-model="filter.priceMax">
-                </div>
+                </div> -->
+                <label class="col-md-12 text-center">From {{ formatNum(filter.priceMin) }}đ to {{ formatNum(filter.priceMax) }}đ</label>
+                <input type="range" class="form-range" min="0" max="10000000" step="100000" v-model="filter.priceMax">
               </div>
             </div>
           </div>
@@ -55,7 +57,7 @@ export default {
         name: '',
         type: '',
         priceMin: 0,
-        priceMax: 999
+        priceMax: 1000000
       },
       categories: []
 		}
@@ -69,6 +71,14 @@ export default {
       console.log(err);
     })
   },
+  methods: {
+    clickCallback (pageNum) {
+      this.currentPage = pageNum;
+    },
+    formatNum(num) {
+      return num.toLocaleString();
+    }
+  }
 }
 </script>
 
