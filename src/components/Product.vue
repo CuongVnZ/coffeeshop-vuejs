@@ -3,16 +3,19 @@
 		<div class="product-circle"/>
 		<img class="product-image" :src="product.img" :alt="product.title"/>
 		<div class="product-info">
-			<div class="product-icon" v-add-to-cart="{ $store, item: {...product, quantity: 1} }">
-				<i class="bi bi-cart-plus-fill"></i>
-			</div>
-			<router-link :to="'/product/' + product.pid" class="text-dark text-decoration-none">
-				<div class="product-icon">
-					<i class="bi bi-search"></i>
+			<label class="product-title"> {{ product.title }} </label>
+			<div class="product-icons">
+				<div class="product-icon" v-add-to-cart="{ $store, item: {...product, quantity: 1} }">
+					<i class="bi bi-cart-plus-fill"></i>
 				</div>
-			</router-link>
-			<div class="product-icon">
-				<i class="bi bi-heart-fill"></i>
+				<router-link :to="'/product/' + product.pid" class="text-dark text-decoration-none">
+					<div class="product-icon">
+						<i class="bi bi-search"></i>
+					</div>
+				</router-link>
+				<div class="product-icon">
+					<i class="bi bi-heart-fill"></i>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -71,11 +74,26 @@ export default {
 	background-color: rgba(0,0,0,0.2);
 	z-index: 3;
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	transition: all 0.5s ease;
 	cursor: pointer;
 	border-radius: 10px;
+}
+
+.product-title {
+	color: rgb(0, 0, 0);
+	background-color: rgba(255, 255, 255, 0.8);
+	text-align: center;
+	border-radius: 10px;
+	margin-bottom: 5px;
+	padding: 3px;
+}
+
+.product-icons {
+	display: flex;
+	cursor: pointer;
 }
 
 .product-icon {
