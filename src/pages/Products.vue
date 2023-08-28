@@ -28,7 +28,7 @@
                   <input type="number" class="form-control col-6" id="priceMax" v-model="filter.priceMax">
                 </div> -->
                 <label class="col-md-12 text-center">From ${{ formatNum(filter.priceMin) }} to ${{ formatNum(filter.priceMax) }}</label>
-                <input type="range" class="form-range" min="0" max="100" step="1" v-model="filter.priceMax">
+                <input type="range" class="form-range" min="0" max="5000000" step="100000" v-model="filter.priceMax">
               </div>
             </div>
           </div>

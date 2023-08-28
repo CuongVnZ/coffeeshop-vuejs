@@ -36,7 +36,7 @@
   </table>
       <paginate
         v-if="!isHistoryLoading"
-        :page-count="orders.length/itemsPerPage"
+        :page-count="Math.ceil(orders.length/itemsPerPage)"
         :page-range="3"
         :margin-pages="2"
         :click-handler="clickCallback"

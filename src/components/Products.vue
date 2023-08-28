@@ -5,7 +5,7 @@
 
 	<paginate
         v-if="filter.paginated"
-        :page-count="filtered.length/filter.itemsPerPage"
+        :page-count="Math.ceil(filtered.length/filter.itemsPerPage)"
         :page-range="3"
         :margin-pages="2"
         :click-handler="clickCallback"
