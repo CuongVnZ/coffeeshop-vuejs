@@ -13,6 +13,21 @@
 							<span>${{ product.price }}</span>
 						</div>
 						<p class="lead">{{ product.desc }}</p>
+						<!-- Type choose (Size) -->
+						<div class="col-md-12 mb-3">
+							<label class="mb-1">Choose your type:</label>
+							<div class="col-md">
+								<button type="button" class="btn btn-outline-dark me-3" v-for="item in product.types" :key="item" :class="{'active': currentType === item}" @click="currentType = item">{{ item }}</button>
+							</div>
+						</div>
+						<!-- Extra option (multiple choose) -->
+						<div class="col-md-12 mb-3" v-if="product.options.length">
+							<label class="mb-1">Choose your options:</label>
+							<div class="col-md">
+								<button type="button" class="btn btn-outline-dark" v-for="item in product.options" :key="item" :class="{'active': currentType === item}" @click="currentType = item">{{ item }}</button>
+							</div>
+						</div>
+						<!-- Quantity -->
 						<div class="d-flex">
 							<div class="btn-group me-3">
 								<button type="button" class="btn btn-outline-dark" @click="decrease">-</button>
@@ -54,7 +69,8 @@ export default {
 	data () {
 		return {
 			product: undefined,
-			quantity: 1
+			quantity: 1,
+			currentType: undefined
 		}
 	},
 	computed: {
