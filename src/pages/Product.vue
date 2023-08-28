@@ -17,14 +17,14 @@
 						<div class="col-md-12 mb-3">
 							<label class="mb-1">Choose your type:</label>
 							<div class="col-md">
-								<button type="button" class="btn btn-outline-dark me-3" v-for="item in product.types" :key="item" :class="{'active': currentType === item}" @click="currentType = item">{{ item }}</button>
+								<button type="button" class="btn btn-outline-dark me-1 mb-1" v-for="item in product.types" :key="item" :class="{'active': currentType === item}" @click="currentType = item">{{ item }}</button>
 							</div>
 						</div>
 						<!-- Extra option (multiple choose) -->
 						<div class="col-md-12 mb-3" v-if="product.options.length">
 							<label class="mb-1">Choose your options:</label>
 							<div class="col-md">
-								<button type="button" class="btn btn-outline-dark" v-for="item in product.options" :key="item" :class="{'active': currentType === item}" @click="currentType = item">{{ item }}</button>
+								<button type="button" class="btn btn-outline-dark me-1 mb-1" v-for="item in product.options" :key="item" :class="{'active': currentOptions.include(item)}" @click="toggleOptions(item)">{{ item }}</button>
 							</div>
 						</div>
 						<!-- Quantity -->
@@ -70,7 +70,8 @@ export default {
 		return {
 			product: undefined,
 			quantity: 1,
-			currentType: undefined
+			currentType: undefined,
+			currentOptions: []
 		}
 	},
 	computed: {
@@ -92,6 +93,15 @@ export default {
 		}
 	},
 	methods: {
+		toggleOptions (item) {
+			if (this.currentOptions.include(item)) {
+				this.currentOptions = this.currentOptions.filter((option) => {
+					return option !== item;
+				});
+			} else {
+				this.currentOptions.push(item);
+			}
+		},
 		loadProduct() {
 			if (this.products.isLoading && !this.products.data.length) return;
 
