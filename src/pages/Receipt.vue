@@ -31,7 +31,7 @@ import Spinner from '../components/Spinner.vue';
                     <p class="text-muted mb-0 small">Small</p>
                   </div>
                   <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class="text-muted mb-0 small">Topping: None</p>
+                    <p class="text-muted mb-0 small">Options: None</p>
                   </div>
                   <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
                     <p class="text-muted mb-0 small">Qty: {{ product.quantity }}</p>
@@ -74,6 +74,10 @@ import Spinner from '../components/Spinner.vue';
             <div class="d-flex justify-content-between mb-5">
               <p class="text-muted mb-0">Shipping Address: {{ order.shippingAddress }}</p>
               <p class="text-muted mb-0"><span class="fw-bold me-4">Shipping</span> $00.00</p>
+            </div>
+
+            <div class="d-flex justify-content-between mb-5">
+              <p class="text-muted mb-0">Order Status: {{ order.status }}</p>
             </div>
           </div>
           <div class="card-footer border-0 px-4 py-3 bg-dark">
