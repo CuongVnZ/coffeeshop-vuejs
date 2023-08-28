@@ -7,7 +7,7 @@ import Spinner from '../components/Spinner.vue';
 <div class="container my-5">
   <div class="row min-vh-100 d-flex justify-content-center">
     <Spinner v-if="isLoading"/>
-    <div class="col-lg-10 col-xl-8" v-if="!isLoading">
+    <div class="col-lg-10 col-xl-8" v-else>
         <div class="card" style="border-radius: 10px;">
           <div class="card-header px-4 py-3">
             <h5 class="text-muted mb-0 text-center">Thanks for your Order, <span>{{ user.fullname }}</span>!</h5>
@@ -116,8 +116,19 @@ export default {
       console.log(items)
       items.forEach(item => {
         var product = this.$store.getters.getProductById(item.pid);
-        product.quantity = item.quantity;
-        this.products.push(product)
+
+        // set to deleted product if not found
+        if(!product) {
+          product = {
+            title: 'Deleted Product',
+            img: 'https://via.placeholder.com/150',
+            price: 0,
+            quantity: 0
+          }
+        } else {
+          product.quantity = item.quantity;
+          this.products.push(product)
+        }
       });
       this.isLoading = false;
       console.log(this.products)
