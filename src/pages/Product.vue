@@ -122,7 +122,7 @@ export default {
 				if(this.currentType.mode == 'add') price += this.currentType.price;
 				else price *= this.currentType.price;
 			}
-			return price;
+			return price.toLocaleString();
 		},
 		loadProduct() {
 			if (this.products.isLoading && !this.products.data.length) return;
