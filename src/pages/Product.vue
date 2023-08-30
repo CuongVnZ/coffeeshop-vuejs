@@ -112,13 +112,15 @@ export default {
 		},
 		getCurrentPrice() {
 			let price = this.product.price;
-			if (this.currentType) {
-				price += this.currentType.price;
-			}
 			if (this.currentOptions.length) {
 				this.currentOptions.forEach((option) => {
-					price += option.price;
+					if(option.mode == 'add') price += option.price;
+					else price *= option.price;
 				});
+			}
+			if (this.currentType) {
+				if(this.currentType.mode == 'add') price += this.currentType.price;
+				else price *= this.currentType.price;
 			}
 			return price;
 		},
