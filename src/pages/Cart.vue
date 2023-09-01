@@ -56,6 +56,7 @@ export default {
 	},
 	created() {
     this.cart = this.$store.getters.getCart;
+    console.log(this.cart)
     this.calculateTotal();
 	},
   methods: {

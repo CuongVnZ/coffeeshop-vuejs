@@ -24,7 +24,8 @@ export default {
   mounted() {
     // check valid token
     var token = this.$store.getters.getToken;
-    console.log(token)
+    if(token == null || token == undefined) return;
+
     userRequest(token).get('/auth/test')
     .then(res => {
       console.log(res.data);
@@ -33,7 +34,6 @@ export default {
       console.log(err);
       this.$store.dispatch('addNotification', "Invalid Token");
       this.$store.dispatch('logout');
-      // push /login
       this.$router.push('/login');
     })
   }

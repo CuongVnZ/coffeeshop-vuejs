@@ -29,6 +29,16 @@
 				<div class="card-body">
 					<h5 class="card-title">{{ item.title }}</h5>
 					<p class="card-text">{{ item.desc }}</p>
+
+					<!-- Type & Options information-->
+					<p class="card-text" v-if="item.choosedType">
+						<small class="text-muted">Type: {{ item.choosedType.name }}</small>
+					</p>
+					<p class="card-text" v-if="item.choosedOptions.length">
+						<small class="text-muted">Options: {{ item.choosedOptions.map(item => item.name).join(', ') }}</small>
+					</p>
+					
+					<!-- Price-->
 					<p class="card-text"><small class="text-muted">Price: ${{ item.price }}</small></p>
 					<div class="d-flex justify-content-between align-items-center">
 						<div class="btn-group">
@@ -56,7 +66,7 @@ export default {
 	},
   data () {
     return {
-		modalId: 'areYouSure' + '-' + this.item.pid
+			modalId: 'areYouSure' + '-' + this.item.pid
     }
   },
   methods: {
