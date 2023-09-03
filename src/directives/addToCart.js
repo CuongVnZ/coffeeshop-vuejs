@@ -10,14 +10,29 @@ export default {
       const type = value.type
       const options = value.options
 
-      if(type) item.choosedType = type
+      const totalPrice = item.price
+      if(type) {
+        item.choosedType = type
+        totalPrice+=type.price
+      }
       else item.choosedType = item.types[0]
 
-      if(options) item.choosedOptions = options
+      if(options) {
+        item.choosedOptions = options
+        options.forEach(option => {
+          totalPrice+=option.price
+        });
+      }
       else item.choosedOptions = []
 
-      store.dispatch('addToCart', item)
-      store.dispatch('addNotification', "You added item(s) to your cart.")
+      if(totalPrice <= 0) {
+        store.dispatch('addNotification', "You can't add zero-priced item to your cart.")
+        return
+      } else {
+        item.totalPrice = totalPrice
+        store.dispatch('addToCart', item)
+        store.dispatch('addNotification', "You added item(s) to your cart.")
+      }
     });
   }
 }

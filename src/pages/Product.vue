@@ -6,7 +6,7 @@
 				<Spinner v-if="products.isLoading && !this.products.data.length" />
 
 				<!-- "CATEGORY / TITLE" p-->
-				<p class="text-muted mb-4" v-if="!products.isLoading && this.products.data.length">
+				<p class="text-muted mb-5" v-if="!products.isLoading && this.products.data.length">
 					PRODUCTS | {{ product.category.toUpperCase() }} | {{ product.title.toUpperCase() }}
 				</p>
 				<div class="row gx-4 gx-lg-5 align-items-center" v-if="product">
