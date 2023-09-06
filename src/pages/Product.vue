@@ -23,7 +23,7 @@
 							<label class="mb-1">Choose your type:</label>
 							<div class="col-md">
 								<button type="button" class="btn btn-outline-dark me-1 mb-1" v-for="item in product.types" :key="item" :class="{'active': currentType === item}" @click="toggleType(item)">
-									{{ item.name }} ({{ item.mode == 'add' ? '+' : 'x' }}${{ item.price }})
+									{{ item.name }} ({{ item.mode == 'add' ? '+' : 'x' }}{{ item.price.toLocaleString() }})
 								</button>
 							</div>
 						</div>
@@ -32,7 +32,7 @@
 							<label class="mb-1">Choose your options:</label>
 							<div class="col-md">
 								<button type="button" class="btn btn-outline-dark me-1 mb-1" v-for="item in product.options" :key="item" :class="{'active': currentOptions.includes(item)}" @click="toggleOptions(item)">
-									{{ item.name }} ({{ item.mode == 'add' ? '+' : 'x' }}${{ item.price }})
+									{{ item.name }} ({{ item.mode == 'add' ? '+' : 'x' }}{{ item.price.toLocaleString() }})
 								</button>
 							</div>
 						</div>
