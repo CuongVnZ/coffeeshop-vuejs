@@ -9,12 +9,11 @@ const mutations = {
     const index = state.data.findIndex(p => p.pid === item.pid)
     if (index !== -1) {
       // state.data[index].quantity += item.quantity
-      // only add if the two items are the similar object
-      if (JSON.stringify(state.data[index]) === JSON.stringify(item)) {
+      // only add if the two items have the same types and options
+      if (state.data[index].type === item.type && state.data[index].options === item.options) {
         state.data[index].quantity += item.quantity
+        return;
       }
-
-      return;
     }
 
     state.data.push(item)
