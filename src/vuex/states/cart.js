@@ -10,7 +10,7 @@ const mutations = {
     if (index !== -1) {
       // state.data[index].quantity += item.quantity
       // only add if the two items have the same types and options
-      if (state.data[index].type === item.type && state.data[index].options === item.options) {
+      if (state.data[index].choosedType === item.choosedType && state.data[index].choosedOptions === item.choosedOptions) {
         state.data[index].quantity += item.quantity
         return;
       }

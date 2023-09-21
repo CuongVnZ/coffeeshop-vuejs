@@ -10,20 +10,19 @@ export default {
       const type = value.type
       const options = value.options
 
-      const totalPrice = item.price
+      var totalPrice = item.price
+      console.log(value)
       if(type) {
         item.choosedType = type
         totalPrice+=type.price
-      }
-      else item.choosedType = item.types[0]
+      } else item.choosedType = item.types[0]
 
       if(options) {
         item.choosedOptions = options
         options.forEach(option => {
           totalPrice+=option.price
         });
-      }
-      else item.choosedOptions = []
+      } else item.choosedOptions = []
 
       if(totalPrice <= 0) {
         store.dispatch('addNotification', "You can't add zero-priced item to your cart.")

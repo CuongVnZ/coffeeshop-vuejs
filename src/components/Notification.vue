@@ -27,7 +27,6 @@ export default {
     }
   },
   mounted () {
-    // Automatically show toast
     var toast = Toast.getOrCreateInstance(document.getElementById(this.toastId))
     toast.show()
   }
