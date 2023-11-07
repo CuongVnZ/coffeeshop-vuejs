@@ -8,14 +8,12 @@ const mutations = {
   ADD_TO_CART(state, item) {
     const index = state.data.findIndex(p => p.pid === item.pid)
     if (index !== -1) {
-      // state.data[index].quantity += item.quantity
       // only add if the two items have the same types and options
       if (state.data[index].choosedType === item.choosedType && state.data[index].choosedOptions === item.choosedOptions) {
         state.data[index].quantity += item.quantity
         return;
       }
     }
-
     state.data.push(item)
   },
   REMOVE_FROM_CART(state, productId) {
