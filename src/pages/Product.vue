@@ -43,7 +43,7 @@
 								<button type="button" class="btn btn-outline-dark">{{ quantity }}</button>
 								<button type="button" class="btn btn-outline-dark" @click="increase">+</button>
 							</div>
-							<button class="btn btn-outline-dark flex-shrink-0" type="button" v-add-to-cart="{ $store, item: {...product, quantity}, type: currentType, options: currentOptions }">
+							<button class="btn btn-outline-dark flex-shrink-0" type="button" v-add-to-cart="{ $store, item: {...product, quantity, currentType, currentOptions} }">
 								<i class="bi-cart-fill me-1"></i>
 								Add to cart
 							</button>

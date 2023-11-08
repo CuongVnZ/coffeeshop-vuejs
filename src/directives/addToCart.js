@@ -7,18 +7,14 @@ export default {
       
       const store = value.$store
       const item = value.item
-      const type = value.type
-      const options = value.options
 
       var totalPrice = item.price
       console.log(value)
-      if(type) {
-        item.choosedType = type
+      if(item.choosedType) {
         totalPrice+=type.price
       } else item.choosedType = item.types[0]
 
-      if(options) {
-        item.choosedOptions = options
+      if(item.choosedOptions) {
         options.forEach(option => {
           totalPrice+=option.price
         });
