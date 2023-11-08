@@ -102,10 +102,11 @@ export default {
 		}
 	},
 	methods: {
-		toggleType (item) {
+		toggleType(item) {
 			this.currentType = item;
+			console.log(this.currentType)
 		},
-		toggleOptions (item) {
+		toggleOptions(item) {
 			if (this.currentOptions.includes(item)) {
 				this.currentOptions = this.currentOptions.filter((option) => {
 					return option !== item;
