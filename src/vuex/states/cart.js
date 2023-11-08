@@ -8,6 +8,10 @@ const mutations = {
   ADD_TO_CART(state, item) {
     const index = state.data.findIndex(p => p.pid === item.pid)
     if (index !== -1) {
+
+      console.log(state.data[index].choosedType)
+      console.log(item.choosedType)
+      console.log(state.data[index].choosedType == item.choosedType)
       // only add if the two items have the same types and options
       if (state.data[index].choosedType === item.choosedType && state.data[index].choosedOptions === item.choosedOptions) {
         state.data[index].quantity += item.quantity

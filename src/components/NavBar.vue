@@ -29,11 +29,6 @@
                   Login
                 </button>
               </router-link>
-              <!-- <router-link to="/profile" class="nav-link" v-if="this.$store.getters.getUser">
-                <button class="btn btn-outline-dark">
-                  <i class="bi bi-person-circle"></i>
-                </button>
-              </router-link> -->
               <li class="nav-item dropdown" v-if="this.$store.getters.getUser">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <img src="https://placehold.co/100x100" width="40" height="40" class="rounded-circle">
@@ -43,16 +38,10 @@
                   <button class=" dropdown-item text-danger" @click="logout"><i class="bi bi-door-closed-fill mx-1"></i>Logout</button>
                 </div>
               </li>
-              <!-- <a class="nav-link" v-if="this.$store.getters.getUser">
-                <button class="btn btn-outline-danger" v-if="this.$store.getters.getUser" @click="logout">
-                  <i class="bi bi-door-closed-fill"></i>
-                  Logout
-                </button>
-              </a> -->
               <router-link to="/cart" class="nav-link">
                 <button class="btn btn-outline-dark">
-                    <i class="bi bi-cart-fill me-1"></i>
-                    <span class="badge bg-dark text-white ms-1 rounded-pill">{{ this.$store.getters.getCartSize }}</span>
+                  <i class="bi bi-cart-fill me-1"></i>
+                  <span class="badge bg-dark text-white ms-1 rounded-pill">{{ this.$store.getters.getCartSize }}</span>
                 </button>
               </router-link>
             </div>
