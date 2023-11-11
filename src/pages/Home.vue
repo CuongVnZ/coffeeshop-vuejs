@@ -1,11 +1,7 @@
 <template>
-	<!-- Slider -->
 	<Slider />
-
 	<div class="container my-5">
-		<!-- Categories -->
 		<Categories />
-
 		<hr/>
 		<!-- Product Lists -->
 		<section class="product-lists mt-5">
@@ -17,7 +13,6 @@
 				<Products :filter="{limit:5}" />
 			</div>
 		</section>
-
 		<hr/>
 		<!-- Our story -->
 		<section class="our-story mt-5">
