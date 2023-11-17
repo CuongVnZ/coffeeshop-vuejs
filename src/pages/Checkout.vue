@@ -108,7 +108,6 @@
           </div> -->
 
           <hr class="my-4">
-
           <button class="w-100 btn btn-outline-dark flex-shrink-0 btn-lg" type="button" @click="checkout">Go to payment</button>
         </form>
       </div>

@@ -51,22 +51,21 @@ export default {
 
       // Validate username
       if (!this.usernameInput.trim()) {
-          result = false;
-          this.errors.push("Please enter a username.");
+        result = false;
+        this.errors.push("Please enter a username.");
       }
 
       // Validate password
       if (!this.passwordInput.trim()) {
-          result = false;
-          this.errors.push("Please enter a password.");
+        result = false;
+        this.errors.push("Please enter a password.");
       }
 
       if (!result) {
-          e.preventDefault(); // prevent form submission	
-          // scroll to top
-          window.scrollTo(0, 0);
+        e.preventDefault();
+        window.scrollTo(0, 0);
       } else {
-          this.handleLogin();
+        this.handleLogin();
       }
     },
 
