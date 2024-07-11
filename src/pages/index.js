@@ -9,13 +9,13 @@ import Checkout from './Checkout.vue'
 import Receipt from './Receipt.vue'
 
 export { 
-    Home, 
-    Products, 
-    Product, 
-    Cart, 
-    Login, 
-    Register, 
-    Profile, 
-    Checkout, 
-    Receipt
+  Home, 
+  Products, 
+  Product, 
+  Cart, 
+  Login, 
+  Register, 
+  Profile, 
+  Checkout, 
+  Receipt
 }

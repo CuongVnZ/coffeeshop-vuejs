@@ -30,8 +30,6 @@
         <td>$75.00</td>
         <td><label class="bg-warning rounded px-3">Shipped</label></td>
       </tr> -->
-
-
     </tbody>
   </table>
       <paginate

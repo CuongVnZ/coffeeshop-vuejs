@@ -9,7 +9,7 @@
 				<div class="col-md-12 mb-2">
 					<h1 class="fw-bold">TRENDING PRODUCTS</h1>
 				</div>
-				<BarChart v-if="!products.isLoading" :products="products.data"/>
+				<!-- <BarChart v-if="!products.isLoading" :products="products.data"/> -->
 				<Products :filter="{limit:5}" />
 			</div>
 		</section>
